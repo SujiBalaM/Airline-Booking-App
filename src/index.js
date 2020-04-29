@@ -9,15 +9,28 @@ import App from './App';
 import Login from './admin/login'
 import * as serviceWorker from './serviceWorker';
 import createHistory from 'history/createBrowserHistory'
+import Dashboard from './admin/dashboard';
 const history = createHistory();
 
+const userDetails = localStorage.getItem('user');
 
 ReactDOM.render(
   <Provider store={store} >
     <Router history={history}>  
       <Switch>
           <Route exact path="/" component={Login}/>
-          <Route exact path="/login" component={Login}/>
+          <Route exact path="/login" component={Login} />
+
+          {/* <Route path="/login" render={props => (
+					 user && user.role === "admin" 
+						? <Login {...props} />
+						: <Redirect to={{ pathname: '/login'}} />
+				)} /> */}
+        {
+          <Route path = "/dashboard" render={props =>(
+            userDetails && userDetails.role === "admin"?<Dashboard {...props}/>:<Redirect to={{pathname:'/login'}} />
+          )}/>
+        }
       </Switch>
     </Router>
 </Provider>,

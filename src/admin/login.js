@@ -1,5 +1,6 @@
 import React ,{Component} from 'react';
 import { connect } from 'react-redux';
+import { userLogin } from '../redux/login/action'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -40,11 +41,36 @@ import Header from '../common/header';
 class Login extends Component {
 constructor(props) {
   super(props);
-  this.state = {}
+  this.state = {
+    email: "",
+    password: ""
+  }
 }
 
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value 
+    })
+  }
+
+  handleClick = (e) =>{
+    e.preventDefault();
+    const {email, password} = this.state;
+    const { login } = this.props;
+    login(email, password);
+  }
+
+  componentDidUpdate() {
+    const { loginusers, history } = this.props; 
+    console.log('didUpdate',this.props)
+    if(loginusers.isLoginSuccess){
+      history.push('dashboard');
+    } 
+  }
+
   render(){
-    console.log("render inside",this);
+    console.log("state", this.props);
+    const { loginusers } = this.props;
   return (
     <div>
       <Header />
@@ -52,6 +78,9 @@ constructor(props) {
         <CssBaseline />
         <div className="">
           <Avatar className=""></Avatar>
+          {loginusers.isloginPending && <p>Pending</p>}
+          {loginusers.isLoginSuccess && <p>Success</p>}
+          {loginusers.isloginFailure && <p>Login Failed</p>}
           <Typography component='h1' variant='h5'>
             Sign in
           </Typography>
@@ -66,6 +95,7 @@ constructor(props) {
               name='email'
               autoComplete='email'
               autoFocus
+              onChange={this.handleChange}
             />
             <TextField
               variant='outlined'
@@ -77,6 +107,7 @@ constructor(props) {
               type='password'
               id='password'
               autoComplete='current-password'
+              onChange={this.handleChange}
             />
             <FormControlLabel
               control={<Checkbox value='remember' color='primary' />}
@@ -88,6 +119,7 @@ constructor(props) {
               variant='contained'
               color='primary'
               className=""
+              onClick={this.handleClick}
             >
               Sign In
             </Button>
@@ -115,10 +147,15 @@ constructor(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log("state", state);
   return {
-    login: state.loginlist
+    loginusers: state.loginlist
   }
 }
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (email, password) => dispatch(userLogin(email, password))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
