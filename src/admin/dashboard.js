@@ -3,6 +3,8 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import { Slide } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { dasboardData } from '../redux/dashboard/action';
 
 class Dashboard extends Component {
   constructor() {
@@ -44,6 +46,8 @@ class Dashboard extends Component {
     };
   }
   render() {
+    const dashboardList = this.props;
+    console.log(this.props);
     return (
       <div
         className='ag-theme-balham'
@@ -60,4 +64,10 @@ class Dashboard extends Component {
     );
   }
 }
-export default Dashboard;
+
+const mapStateToProps = (state) => {
+  return {
+    dashboardList: state.dashboardAdminList,
+  };
+};
+export default connect(mapStateToProps)(Dashboard);

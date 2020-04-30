@@ -5,7 +5,7 @@
       "first_name": "Robert",
       "last_name": "Schwartz",
       "email": "rob23@gmail.com",
-      "password":"rob23",
+      "password": "rob23",
       "role": "admin"
     },
     {
@@ -13,7 +13,7 @@
       "first_name": "Lucy",
       "last_name": "Ballmer",
       "email": "lucyb56@gmail.com",
-      "password":"lucyb56",
+      "password": "lucyb56",
       "role": "staff"
     },
     {
@@ -21,7 +21,7 @@
       "first_name": "Anna",
       "last_name": "Smith",
       "email": "annasmith23@gmail.com",
-      "password":"annasmith23",
+      "password": "annasmith23",
       "role": "staff"
     },
     {
@@ -29,7 +29,7 @@
       "first_name": "Robert",
       "last_name": "Brown",
       "email": "bobbrown432@yahoo.com",
-      "password":"bobbrown432",
+      "password": "bobbrown432",
       "role": "admin"
     },
     {
@@ -37,16 +37,84 @@
       "first_name": "Roger",
       "last_name": "Bacon",
       "email": "rogerbacon12@yahoo.com",
-      "password":"rogerbacon12",
+      "password": "rogerbacon12",
       "role": "admin"
     },
-    { 
-      "id":6,
-      "first_name":"Sujatha",
-      "last_name":"Manoharan",
-      "email":"sujathamanoharan7@gmail.com",
-      "password":"Lavimohi2427",
-      "role":"admin"
+    {
+      "id": 6,
+      "first_name": "Sujatha",
+      "last_name": "Manoharan",
+      "email": "sujathamanoharan7@gmail.com",
+      "password": "Lavimohi2427",
+      "role": "admin"
+    }
+  ],
+  "rowData": [
+    {
+      "slno": 1,
+      "firstname": "Sujatha",
+      "lastname": "Mano",
+      "gender": "F",
+      "DOB": "07/06/85",
+      "passportnumber": "AC123",
+      "address": "#48,s1,kubera flats,chennai",
+      "ancillaryservices": "req Food",
+      "seatnumber": "F1"
+    },
+    {
+      "slno": 2,
+      "firstname": "Bala",
+      "lastname": "Murugesh",
+      "gender": "M",
+      "DOB": "07/06/82",
+      "passportnumber": "AC143",
+      "address": "#48,s1,kubera flats,chennai",
+      "ancillaryservices": "req Food",
+      "seatnumber": "F2"
+    },
+    {
+      "slno": 3,
+      "firstname": "Lavith",
+      "lastname": "Bala",
+      "gender": "M",
+      "DOB": "24/10/10",
+      "passportnumber": "AC113",
+      "address": "#48,s1,kubera flats,chennai",
+      "ancillaryservices": "req Food",
+      "seatnumber": "F3"
+    },
+    {
+      "slno": 4,
+      "firstname": "Mohit",
+      "lastname": "Bala",
+      "gender": "M",
+      "DOB": "27/08/14",
+      "passportnumber": "AC133",
+      "address": "#48,s1,kubera flats,chennai",
+      "ancillaryservices": "req Food",
+      "seatnumber": "F4"
+    },
+    {
+      "slno": 5,
+      "firstname": "Sridhar",
+      "lastname": "Mano",
+      "gender": "M",
+      "DOB": "16/06/98",
+      "passportnumber": "AC193",
+      "address": "#48,s1,kubera flats,chennai",
+      "ancillaryservices": "req Food",
+      "seatnumber": "F5"
+    },
+    {
+      "slno": 6,
+      "firstname": "Durga",
+      "lastname": "Prasad",
+      "gender": "M",
+      "DOB": "30/08/94",
+      "passportnumber": "AC183",
+      "address": "#48,s1,kubera flats,chennai",
+      "ancillaryservices": "req Food",
+      "seatnumber": "F6"
     }
   ]
 }
