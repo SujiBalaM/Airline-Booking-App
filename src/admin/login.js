@@ -62,7 +62,6 @@ constructor(props) {
 
   componentDidUpdate() {
     const { loginusers, history } = this.props; 
-    console.log('didUpdate',this.props)
     if(loginusers.isLoginSuccess){
       history.push('dashboard');
     } 

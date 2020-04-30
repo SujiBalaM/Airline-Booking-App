@@ -8,15 +8,21 @@ export default function dashboardReducer(state = initialState, action = {}) {
   switch (action.type) {
     case GETDASHBOARDDATA_SUCCESS:
       return {
-        ...state,
+        ...state, 
+        data: action.payload,
         getDashboardData: true,
+
       };
     case GETDASHBOARDDATA_FAILURE:
       return {
         ...state,
+        data: [],
         getDashboardData: false,
       };
     default:
-      return state;
+      return {
+        ...state,
+        data: []
+      };
   }
 }

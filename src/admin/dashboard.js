@@ -42,24 +42,84 @@ class Dashboard extends Component {
           ancillaryservices: 'req Food',
           seatnumber: 'F1',
         },
+        {
+          slno: '1',
+          firstname: 'Sujatha',
+          lastname: 'Mano',
+          gender: 'F',
+          DOB: '07/06/85',
+          passportnumber: 'AC123',
+          address: '#48,s1,kubera flats,chennai',
+          ancillaryservices: 'req Food',
+          seatnumber: 'F1',
+        },
+        {
+          slno: '1',
+          firstname: 'Sujatha',
+          lastname: 'Mano',
+          gender: 'F',
+          DOB: '07/06/85',
+          passportnumber: 'AC123',
+          address: '#48,s1,kubera flats,chennai',
+          ancillaryservices: 'req Food',
+          seatnumber: 'F1',
+        },
+        {
+          slno: '1',
+          firstname: 'Sujatha',
+          lastname: 'Mano',
+          gender: 'F',
+          DOB: '07/06/85',
+          passportnumber: 'AC123',
+          address: '#48,s1,kubera flats,chennai',
+          ancillaryservices: 'req Food',
+          seatnumber: 'F1',
+        },
+        {
+          slno: '1',
+          firstname: 'Sujatha',
+          lastname: 'Mano',
+          gender: 'F',
+          DOB: '07/06/85',
+          passportnumber: 'AC123',
+          address: '#48,s1,kubera flats,chennai',
+          ancillaryservices: 'req Food',
+          seatnumber: 'F1',
+        },
+        {
+          slno: '1',
+          firstname: 'Sujatha',
+          lastname: 'Mano',
+          gender: 'F',
+          DOB: '07/06/85',
+          passportnumber: 'AC123',
+          address: '#48,s1,kubera flats,chennai',
+          ancillaryservices: 'req Food',
+          seatnumber: 'F1',
+        }
       ],
     };
   }
+
+  componentDidMount(){
+    const {dasboardData} = this.props;
+    dasboardData();
+  }
+
   render() {
-    const dashboardList = this.props;
-    console.log(this.props);
+    const { dashboardList } = this.props;
     return (
       <div
         className='ag-theme-balham'
         style={{
-          height: '200px',
+          height: '600px',
           width: '100%',
         }}
       >
         <AgGridReact
           columnDefs={this.state.columnDefs}
-          rowData={this.state.rowData}
-        ></AgGridReact>
+          rowData={dashboardList.data}
+        ></AgGridReact> 
       </div>
     );
   }
@@ -70,4 +130,9 @@ const mapStateToProps = (state) => {
     dashboardList: state.dashboardAdminList,
   };
 };
-export default connect(mapStateToProps)(Dashboard);
+
+const mapDispatchToProps = ( dispatch ) => ({
+  dasboardData: () => dispatch(dasboardData())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
