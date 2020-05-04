@@ -13,15 +13,18 @@ import Dashboard from './admin/dashboard';
 const history = createHistory();
 
 const userDetails = localStorage.getItem('user');
-
+// userdetails value = null login
+// userdetails value = availabel dashboard
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <Route exact path='/' component={Login} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/dashboard' component={Dashboard} />
-
+        {/* {
+  loginusers.isLoginSuccess && <Route exact path = '/dashboard' component={Dashboard}/>:
+  <Redirect to={{ pathname:'/login'}}/>
+} */}
         {/* <Route path="/login" render={props => (
 					 user && user.role === "admin" 
 						? <Login {...props} />
@@ -39,6 +42,7 @@ ReactDOM.render(
             }
           />
         }
+        <Route exact path='/' component={Login} />
       </Switch>
     </Router>
   </Provider>,
