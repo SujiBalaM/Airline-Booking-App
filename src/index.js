@@ -13,14 +13,19 @@ import Dashboard from './admin/dashboard';
 const history = createHistory();
 
 const userDetails = localStorage.getItem('user');
+const userInfo = JSON.parse(userDetails);
+console.log("userInfo--->", userInfo);
 // userdetails value = null login
 // userdetails value = availabel dashboard
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/dashboard' component={Dashboard} />
+        <Route path='/login' render={props => (
+					 !userInfo 
+						? <Login {...props} />
+						: <Redirect to={{ pathname: '/dashboard'}} />
+				)} />
         {/* {
   loginusers.isLoginSuccess && <Route exact path = '/dashboard' component={Dashboard}/>:
   <Redirect to={{ pathname:'/login'}}/>
@@ -33,8 +38,8 @@ ReactDOM.render(
         {
           <Route
             path='/dashboard'
-            render={(props) =>
-              userDetails && userDetails.role === 'admin' ? (
+            render={(props) => 
+              userInfo ? (
                 <Dashboard {...props} />
               ) : (
                 <Redirect to={{ pathname: '/login' }} />

@@ -63,6 +63,7 @@ class Login extends Component {
   componentDidUpdate() {
     const { loginusers, history } = this.props;
     if (loginusers.isLoginSuccess) {
+      window.location.reload();
       history.push('dashboard');
     }
   }
