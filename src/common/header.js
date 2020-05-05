@@ -3,56 +3,42 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { connect } from 'react-redux';
-import { userLogin } from '../redux/login/action';
+import { withStyles } from '@material-ui/core/styles';
+
+const userDetails = localStorage.getItem('user');
+const user = JSON.parse(userDetails);
+const useStyles = (theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+});
 
 class Header extends Component {
+  handleClick() {
+    const { history } = this.props;
+    history.push('login');
+  }
   render() {
-    const { loginusers } = this.props;
-    console.log(loginusers);
-    const { loginDetails } = this.props;
-    console.log(loginDetails);
-
+    const { classes } = this.props;
     return (
-      <div>
+      <div className={classes.root}>
         <AppBar position='static'>
           <Toolbar>
-            <Typography
-              component='h1'
-              variant='h5'
-              color='inherit'
-              style={style}
-            >
-              Welcome to Airline Travels Application
+            <Typography variant='h6' className={classes.title}>
+              Welcome {user[0].first_name}
             </Typography>
-            <Button
-              type='reset'
-              fullWidth
-              variant='contained'
-              color='primary'
-              className=''
-            >
-              Log out
-            </Button>
+            <Button color='inherit'> Logout</Button>
           </Toolbar>
         </AppBar>
       </div>
     );
   }
 }
-const style = {
-  alignItems: 'center',
-};
 
-const mapStateToProps = (state) => {
-  return {
-    loginusers: state.loginlist,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loginDetails: (email, password) => dispatch(userLogin(email, password)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withStyles(useStyles)(Header);

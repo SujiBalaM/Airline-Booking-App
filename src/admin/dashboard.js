@@ -5,6 +5,9 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import { Slide } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { dasboardData } from '../redux/dashboard/action';
+import Footer from '../common/footer';
+import Header from '../common/header';
+import Button from '@material-ui/core/Button';
 
 class Dashboard extends Component {
   constructor() {
@@ -30,96 +33,34 @@ class Dashboard extends Component {
           filter: true,
         },
       ],
-      rowData: [
-        {
-          slno: '1',
-          firstname: 'Sujatha',
-          lastname: 'Mano',
-          gender: 'F',
-          DOB: '07/06/85',
-          passportnumber: 'AC123',
-          address: '#48,s1,kubera flats,chennai',
-          ancillaryservices: 'req Food',
-          seatnumber: 'F1',
-        },
-        {
-          slno: '1',
-          firstname: 'Sujatha',
-          lastname: 'Mano',
-          gender: 'F',
-          DOB: '07/06/85',
-          passportnumber: 'AC123',
-          address: '#48,s1,kubera flats,chennai',
-          ancillaryservices: 'req Food',
-          seatnumber: 'F1',
-        },
-        {
-          slno: '1',
-          firstname: 'Sujatha',
-          lastname: 'Mano',
-          gender: 'F',
-          DOB: '07/06/85',
-          passportnumber: 'AC123',
-          address: '#48,s1,kubera flats,chennai',
-          ancillaryservices: 'req Food',
-          seatnumber: 'F1',
-        },
-        {
-          slno: '1',
-          firstname: 'Sujatha',
-          lastname: 'Mano',
-          gender: 'F',
-          DOB: '07/06/85',
-          passportnumber: 'AC123',
-          address: '#48,s1,kubera flats,chennai',
-          ancillaryservices: 'req Food',
-          seatnumber: 'F1',
-        },
-        {
-          slno: '1',
-          firstname: 'Sujatha',
-          lastname: 'Mano',
-          gender: 'F',
-          DOB: '07/06/85',
-          passportnumber: 'AC123',
-          address: '#48,s1,kubera flats,chennai',
-          ancillaryservices: 'req Food',
-          seatnumber: 'F1',
-        },
-        {
-          slno: '1',
-          firstname: 'Sujatha',
-          lastname: 'Mano',
-          gender: 'F',
-          DOB: '07/06/85',
-          passportnumber: 'AC123',
-          address: '#48,s1,kubera flats,chennai',
-          ancillaryservices: 'req Food',
-          seatnumber: 'F1',
-        }
-      ],
     };
   }
 
-  componentDidMount(){
-    const {dasboardData} = this.props;
+  componentDidMount() {
+    const { dasboardData } = this.props;
     dasboardData();
   }
 
   render() {
     const { dashboardList } = this.props;
     return (
-      <div
-        className='ag-theme-balham'
-        style={{
-          height: '600px',
-          width: '100%',
-        }}
-      >
-        <AgGridReact
-          columnDefs={this.state.columnDefs}
-          rowData={dashboardList.data}
-        ></AgGridReact> 
+      <div>
+        <Header />
+        <div
+          className='ag-theme-balham'
+          style={{
+            height: '600px',
+            width: '100%',
+          }}
+        >
+          <AgGridReact
+            columnDefs={this.state.columnDefs}
+            rowData={dashboardList.data}
+          ></AgGridReact>
+          <Button color='inherit'> Add Passanger</Button>
+          <Button color='inherit'> Add Services</Button>
+        </div>
+        <Footer />
       </div>
     );
   }
@@ -131,8 +72,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = ( dispatch ) => ({
-  dasboardData: () => dispatch(dasboardData())
-})
+const mapDispatchToProps = (dispatch) => ({
+  dasboardData: () => dispatch(dasboardData()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

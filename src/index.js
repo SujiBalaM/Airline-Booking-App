@@ -14,18 +14,23 @@ const history = createHistory();
 
 const userDetails = localStorage.getItem('user');
 const userInfo = JSON.parse(userDetails);
-console.log("userInfo--->", userInfo);
+console.log('userInfo--->', userInfo);
 // userdetails value = null login
 // userdetails value = availabel dashboard
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <Route path='/login' render={props => (
-					 !userInfo 
-						? <Login {...props} />
-						: <Redirect to={{ pathname: '/dashboard'}} />
-				)} />
+        <Route
+          path='/login'
+          render={(props) =>
+            !userInfo ? (
+              <Login {...props} />
+            ) : (
+              <Redirect to={{ pathname: '/dashboard' }} />
+            )
+          }
+        />
         {/* {
   loginusers.isLoginSuccess && <Route exact path = '/dashboard' component={Dashboard}/>:
   <Redirect to={{ pathname:'/login'}}/>
@@ -38,7 +43,7 @@ ReactDOM.render(
         {
           <Route
             path='/dashboard'
-            render={(props) => 
+            render={(props) =>
               userInfo ? (
                 <Dashboard {...props} />
               ) : (

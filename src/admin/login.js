@@ -14,9 +14,9 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Footer from '../common/footer';
 import Container from '@material-ui/core/Container';
-import Header from '../common/header';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const useStyles = (theme) => ({
   paper: {
@@ -39,6 +39,19 @@ const useStyles = (theme) => ({
 });
 
 class Login extends Component {
+  successToast = () =>
+    toast.success(
+      'Successfully Logged In!',
+      { position: toast.POSITION.TOP_CENTER },
+      { containerId: 'A' },
+      { autoClose: 15000 }
+    );
+  failureToast = () =>
+    toast.error(
+      'Check the username and Password!',
+      { containerId: 'B' },
+      { position: toast.POSITION.TOP_CENTER }
+    );
   constructor(props) {
     super(props);
     this.state = {
@@ -58,6 +71,11 @@ class Login extends Component {
     const { email, password } = this.state;
     const { login } = this.props;
     login(email, password);
+    if (login.isLoginSuccess) {
+      this.successToast();
+    } else {
+      this.failureToast();
+    }
   };
 
   componentDidUpdate() {
@@ -73,14 +91,16 @@ class Login extends Component {
     const { loginusers } = this.props;
     return (
       <div>
-        <Header />
         <Container component='main' maxWidth='xs'>
           <CssBaseline />
           <div className={classes.paper}>
             <Avatar className={classes.avatar}></Avatar>
-            {loginusers.isloginPending && <p>Pending</p>}
-            {loginusers.isLoginSuccess && <p>Success</p>}
-            {loginusers.isloginFailure && <p>Login Failed</p>}
+            <ToastContainer
+              enableMultiContainer
+              containerId={'A'}
+              position={toast.POSITION.TOP_RIGHT}
+            />
+
             <Typography component='h1' variant='h5'>
               Sign in
             </Typography>
@@ -113,6 +133,7 @@ class Login extends Component {
                 control={<Checkbox value='remember' color='primary' />}
                 label='Remember me'
               />
+
               <Button
                 type='submit'
                 fullWidth
@@ -123,6 +144,8 @@ class Login extends Component {
               >
                 Sign In
               </Button>
+              <ToastContainer />
+
               <Grid container className={classes.submit}>
                 <Grid item xs>
                   <Link href='#' variant='body2'>
@@ -137,9 +160,7 @@ class Login extends Component {
               </Grid>
             </form>
           </div>
-          <Box mt={8}>
-            <Footer />
-          </Box>
+          <Box mt={8}></Box>
         </Container>
       </div>
     );
