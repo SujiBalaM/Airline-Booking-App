@@ -44,13 +44,13 @@ class Login extends Component {
       'Successfully Logged In!',
       { position: toast.POSITION.TOP_CENTER },
       { containerId: 'A' },
-      { autoClose: 15000 }
     );
   failureToast = () =>
     toast.error(
       'Check the username and Password!',
       { containerId: 'B' },
-      { position: toast.POSITION.TOP_CENTER }
+      { position: toast.POSITION.TOP_CENTER },
+
     );
   constructor(props) {
     super(props);
@@ -71,19 +71,27 @@ class Login extends Component {
     const { email, password } = this.state;
     const { login } = this.props;
     login(email, password);
-    if (login.isLoginSuccess) {
-      this.successToast();
-    } else {
-      this.failureToast();
-    }
   };
 
-  componentDidUpdate() {
+  componentWillReceiveProps(nextProps, nextState) {
     const { loginusers, history } = this.props;
-    if (loginusers.isLoginSuccess) {
-      window.location.reload();
-      history.push('dashboard');
+      if(nextProps.loginusers.isloginPending === false && loginusers.isloginPending === true){
+        console.log("loginusers----------->", loginusers.isLoginSuccess)
+  
+          if (nextProps.loginusers.isLoginSuccess === true) {
+            this.successToast();
+            window.location.reload();
+            history.push('dashboard');
+          } else {
+            this.failureToast();
+          }
     }
+  
+    // if (loginusers.isLoginSuccess) {
+      // window.location.reload();
+      
+     // history.push('dashboard');
+    // }
   }
 
   render() {

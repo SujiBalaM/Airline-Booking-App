@@ -32,8 +32,17 @@ class Dashboard extends Component {
           sortable: true,
           filter: true,
         },
+        {headerName: 'One', field: 'fieldName',
+                cellRenderer : function(params){
+                    return <div><button onClick={this.drop}>Click</button></div>;
+                }
+        }
       ],
     };
+  }
+
+  drop = () => {
+    console.log("click");
   }
 
   componentDidMount() {
