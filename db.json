@@ -51,7 +51,7 @@
   ],
   "rowData": [
     {
-      "slno": 1,
+      "id": 1,
       "firstname": "Sujatha",
       "lastname": "Mano",
       "gender": "F",
@@ -62,7 +62,7 @@
       "seatnumber": "F1"
     },
     {
-      "slno": 2,
+      "id": 2,
       "firstname": "Bala",
       "lastname": "Murugesh",
       "gender": "M",
@@ -73,7 +73,7 @@
       "seatnumber": "F2"
     },
     {
-      "slno": 3,
+      "id": 3,
       "firstname": "Lavith",
       "lastname": "Bala",
       "gender": "M",
@@ -84,7 +84,7 @@
       "seatnumber": "F3"
     },
     {
-      "slno": 4,
+      "id": 4,
       "firstname": "Mohit",
       "lastname": "Bala",
       "gender": "M",
@@ -95,7 +95,7 @@
       "seatnumber": "F4"
     },
     {
-      "slno": 5,
+      "id": 5,
       "firstname": "Sridhar",
       "lastname": "Mano",
       "gender": "M",
@@ -106,7 +106,7 @@
       "seatnumber": "F5"
     },
     {
-      "slno": 6,
+      "id": 6,
       "firstname": "Durga",
       "lastname": "Prasad",
       "gender": "M",

@@ -17,10 +17,27 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = (theme) => ({
+  root: {
+    height: '100vh',
+  },
+
+  image: {
+    backgroundImage:
+      'https://3.imimg.com/data3/DG/IG/MY-6652242/images-flightticketbanner-500x500.jpg',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor:
+      theme.palette.type === 'light'
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -43,14 +60,13 @@ class Login extends Component {
     toast.success(
       'Successfully Logged In!',
       { position: toast.POSITION.TOP_CENTER },
-      { containerId: 'A' },
+      { containerId: 'A' }
     );
   failureToast = () =>
     toast.error(
       'Check the username and Password!',
       { containerId: 'B' },
-      { position: toast.POSITION.TOP_CENTER },
-
+      { position: toast.POSITION.TOP_CENTER }
     );
   constructor(props) {
     super(props);
@@ -75,22 +91,25 @@ class Login extends Component {
 
   componentWillReceiveProps(nextProps, nextState) {
     const { loginusers, history } = this.props;
-      if(nextProps.loginusers.isloginPending === false && loginusers.isloginPending === true){
-        console.log("loginusers----------->", loginusers.isLoginSuccess)
-  
-          if (nextProps.loginusers.isLoginSuccess === true) {
-            this.successToast();
-            window.location.reload();
-            history.push('dashboard');
-          } else {
-            this.failureToast();
-          }
+    if (
+      nextProps.loginusers.isloginPending === false &&
+      loginusers.isloginPending === true
+    ) {
+      console.log('loginusers----------->', loginusers.isLoginSuccess);
+
+      if (nextProps.loginusers.isLoginSuccess === true) {
+        this.successToast();
+        window.location.reload();
+        history.push('dashboard');
+      } else {
+        this.failureToast();
+      }
     }
-  
+
     // if (loginusers.isLoginSuccess) {
-      // window.location.reload();
-      
-     // history.push('dashboard');
+    // window.location.reload();
+
+    // history.push('dashboard');
     // }
   }
 
@@ -98,9 +117,13 @@ class Login extends Component {
     const { classes } = this.props;
     const { loginusers } = this.props;
     return (
-      <div>
-        <Container component='main' maxWidth='xs'>
-          <CssBaseline />
+      // <div>
+      //   <Container component='main' maxWidth='xs'>
+      //     <CssBaseline />
+      <Grid container component='main' className={classes.root}>
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
             <Avatar className={classes.avatar}></Avatar>
             <ToastContainer
@@ -147,14 +170,14 @@ class Login extends Component {
                 fullWidth
                 variant='contained'
                 color='primary'
-                className={classes.button}
+                className={classes.submit}
                 onClick={this.handleClick}
               >
                 Sign In
               </Button>
               <ToastContainer />
 
-              <Grid container className={classes.submit}>
+              <Grid container>
                 <Grid item xs>
                   <Link href='#' variant='body2'>
                     Forgot password?
@@ -168,9 +191,8 @@ class Login extends Component {
               </Grid>
             </form>
           </div>
-          <Box mt={8}></Box>
-        </Container>
-      </div>
+        </Grid>
+      </Grid>
     );
   }
 }

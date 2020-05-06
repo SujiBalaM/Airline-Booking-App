@@ -8,7 +8,8 @@ import { dasboardData } from '../redux/dashboard/action';
 import Footer from '../common/footer';
 import Header from '../common/header';
 import Button from '@material-ui/core/Button';
-
+import ImageComponent from '../admin/image';
+import AddPassengers from './addPassengers';
 class Dashboard extends Component {
   constructor() {
     super();
@@ -25,25 +26,32 @@ class Dashboard extends Component {
           filter: true,
         },
         { headerName: 'Address', field: 'address', filter: true },
-        { headerName: 'Ancillary Service', field: 'ancillaryservices' },
+        {
+          headerName: 'Ancillary Service',
+          cellRenderer: 'iconCellRenderer',
+          field: 'ancillaryservices',
+        },
         {
           headerName: 'Seat Number',
           field: 'seatnumber',
           sortable: true,
           filter: true,
         },
-        {headerName: 'One', field: 'fieldName',
-                cellRenderer : function(params){
-                    return <div><button onClick={this.drop}>Click</button></div>;
-                }
-        }
       ],
+      defaultColDef: {
+        flex: 1,
+        minWidth: 130,
+        editable: true,
+        resizable: true,
+      },
+
+      frameworkComponents: { iconCellRenderer: ImageComponent },
     };
   }
 
   drop = () => {
-    console.log("click");
-  }
+    console.log('click');
+  };
 
   componentDidMount() {
     const { dasboardData } = this.props;
@@ -55,19 +63,21 @@ class Dashboard extends Component {
     return (
       <div>
         <Header />
+        <h3>Passenger List</h3>
+        <AddPassengers />
+        <br />
         <div
           className='ag-theme-balham'
           style={{
-            height: '600px',
+            height: '400px',
             width: '100%',
           }}
         >
           <AgGridReact
             columnDefs={this.state.columnDefs}
+            frameworkComponents={this.state.frameworkComponents}
             rowData={dashboardList.data}
           ></AgGridReact>
-          <Button color='inherit'> Add Passanger</Button>
-          <Button color='inherit'> Add Services</Button>
         </div>
         <Footer />
       </div>
