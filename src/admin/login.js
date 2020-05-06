@@ -26,7 +26,7 @@ const useStyles = (theme) => ({
 
   image: {
     backgroundImage:
-      'https://3.imimg.com/data3/DG/IG/MY-6652242/images-flightticketbanner-500x500.jpg',
+      'url(https://c4.wallpaperflare.com/wallpaper/393/536/1/the-sky-clouds-flight-lights-wallpaper-preview.jpg)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light'
@@ -41,6 +41,7 @@ const useStyles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    padding:'20px'
   },
   avatar: {
     margin: theme.spacing(1),

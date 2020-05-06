@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import loginReducer from './login';
 import dashboardReducer from './dashboard/index';
+import passengersReducer from './passengers/index';
 
 const middleWares = [thunk];
 
@@ -17,6 +18,7 @@ const finalCreateStore = composeWithDevTools(applyMiddleware(...middleWares))(
 let rootReducer = combineReducers({
   loginlist: loginReducer,
   dashboardAdminList: dashboardReducer,
+  submitPassengers: passengersReducer,
 });
 
 const initialState = window.__INITIAL_STATE__;
