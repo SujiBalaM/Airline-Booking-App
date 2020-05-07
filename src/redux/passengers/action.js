@@ -1,19 +1,28 @@
-import{ GETPASSENGERDATA_PENDING, GETPASSENGERDATA_FAILURE, GETPASSENGERDATA_SUCCESS } from '../passengers/index';
+import {
+  ADDPASSENGERDATA_PENDING,
+  ADDPASSENGERDATA_FAILURE,
+  ADDPASSENGERDATA_SUCCESS,
+} from '../passengers/index';
+import axios from 'axios';
 
-export function addPassengers(args){
-   return(dispatch) => {
-      dispatch({ type:GETPASSENGERDATA_PENDING});
-      fetch("http://localhost:5000/db/rowData",
-      {
-         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-         },
-         method: "POST",
-         body: JSON.stringify(args)
+export function addPassengers(args) {
+  return (dispatch) => {
+    dispatch({ type: ADDPASSENGERDATA_PENDING });
+    axios
+      .post('http://localhost:5000/rowData', {
+        header: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(args),
       })
-      .then(function(res){ dispatch({ type:GETPASSENGERDATA_SUCCESS }); })
-      .catch(function(res){ dispatch({ type:GETPASSENGERDATA_FAILURE }) })
-            
-   }
+      .then((resp) => {
+        console.log('response', resp);
+        dispatch({ type: ADDPASSENGERDATA_SUCCESS });
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch({ type: ADDPASSENGERDATA_FAILURE });
+      });
+  };
 }
