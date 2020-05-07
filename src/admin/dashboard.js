@@ -15,7 +15,7 @@ class Dashboard extends Component {
     super();
     this.state = {
       columnDefs: [
-        { headerName: 'Sl.No', field: 'slno' },
+        { headerName: 'Sl.No', field: 'id' },
         { headerName: 'First Name', field: 'firstname' },
         { headerName: 'Last Name', field: 'lastname' },
         { headerName: 'Gender', field: 'gender', sortable: true },
@@ -58,6 +58,7 @@ class Dashboard extends Component {
     dasboardData();
   }
 
+
   render() {
     const { dashboardList } = this.props;
     return (
@@ -86,6 +87,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log("state----->", state);
   return {
     dashboardList: state.dashboardAdminList,
   };

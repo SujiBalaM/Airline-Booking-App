@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addPassengers } from '../redux/passengers/action';
+import { dasboardData } from '../redux/dashboard/action';
 import { Button, MenuItem } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -54,9 +55,19 @@ class AddPassengerDialog extends Component {
     formdata.address = data.get('address');
     formdata.ancillaryservices = data.get('ancillary');
     formdata.seatnumber = data.get('seatnumber');
-
     this.props.addingPassengers(formdata);
+    // this.props.dasboardData()
   };
+
+  componentWillReceiveProps(nextProps,nextState){
+    const {addedPassengers, dasboardData} = this.props;
+    if(nextProps.addedPassengers.isDataPending===false && addedPassengers.isDataPending === true){
+      if(nextProps.addedPassengers.isDataSuccess === true){
+        this.props.actionHandleClose();
+        dasboardData();
+      }
+    }
+  }
 
   render() {
     const { classes } = this.props;
@@ -130,18 +141,19 @@ class AddPassengerDialog extends Component {
     );
   }
 }
-// const mapStateToProps = (state) => {
-//    return {
-//      addedPassengers: state.submitPassengers,
-//    };
-//  };
+const mapStateToProps = (state) => {
+   return {
+     addedPassengers: state.submitPassengers,
+   };
+ };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addingPassengers: (formdata) => dispatch(addPassengers(formdata)),
+    dasboardData: () => dispatch(dasboardData())
   };
 };
 
 export default withStyles(useStyles)(
-  connect(null, mapDispatchToProps)(AddPassengerDialog)
+  connect(mapStateToProps, mapDispatchToProps)(AddPassengerDialog)
 );

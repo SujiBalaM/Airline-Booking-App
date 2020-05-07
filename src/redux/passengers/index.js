@@ -18,6 +18,8 @@ export default function passengersReducer(state = initialState, action = {}) {
       return {
         ...state,
         isDataSuccess: true,
+        isDataPending: false,
+        isDataFailure: false
       };
     case ADDPASSENGERDATA_FAILURE:
       return {
