@@ -2,18 +2,31 @@ import React, { Component } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CreateIcon from '@material-ui/icons/Create';
+import AddServicesForm from './addServicesForm';
 class ImageComponent extends Component {
-
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+    this.handleClickOpen = this.handleClickOpen.bind(this);
+  }
+  handleClickOpen() {
+    const { isOpen } = this.state;
+    console.log('from Image component', this.state);
+    this.setState({ isOpen: true });
+  }
+  handleClose() {
+    this.setState({ isOpen: false });
+  }
   render() {
     const { value } = this.props;
-    console.log("state", this.state);
-    console.log("props", this.props);
+    console.log('state', this.state);
+    console.log('props', this.props);
     return (
       <div>
-        {value}
         <span>
-          <AddIcon />
+          <AddIcon onClick={this.handleClickOpen} />
         </span>
         <span>
           <CreateIcon />
@@ -21,6 +34,8 @@ class ImageComponent extends Component {
         <span>
           <DeleteIcon />
         </span>
+
+        <AddServicesForm isOpen={true} actionHandleClose={this.handleClose} />
       </div>
     );
   }

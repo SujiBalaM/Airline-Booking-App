@@ -15,32 +15,39 @@ class Dashboard extends Component {
     super();
     this.state = {
       columnDefs: [
-        { headerName: 'Sl.No', field: 'id' },
-        { headerName: 'First Name', field: 'firstname' },
-        { headerName: 'Last Name', field: 'lastname' },
-        { headerName: 'Gender', field: 'gender', sortable: true },
-        { headerName: 'Date of Birth', field: 'DOB', filter: true },
+        { headerName: 'Sl.No', field: 'id', width: 75 },
+        { headerName: 'First Name', field: 'firstname', width: 100 },
+        { headerName: 'Last Name', field: 'lastname', width: 100 },
+        { headerName: 'Gender', field: 'gender', sortable: true, width: 75 },
+        { headerName: 'Date of Birth', field: 'DOB', filter: true, width: 100 },
         {
           headerName: 'Passport Number',
           field: 'passportnumber',
           filter: true,
+          width: 110,
         },
-        { headerName: 'Address', field: 'address', filter: true },
+        { headerName: 'Address', field: 'address', filter: true, width: 175 },
         {
-          headerName: 'Ancillary Service',
-          cellRenderer: 'iconCellRenderer',
+          headerName: 'Ancillary Services',
           field: 'ancillaryservices',
+          width: 150,
+        },
+        {
+          headerName: 'Ancillary Actions',
+          cellRenderer: 'iconCellRenderer',
+          width: 120,
         },
         {
           headerName: 'Seat Number',
           field: 'seatnumber',
           sortable: true,
           filter: true,
+          width: 100,
         },
       ],
       defaultColDef: {
         flex: 1,
-        minWidth: 130,
+        minWidth: 1,
         editable: true,
         resizable: true,
       },
@@ -58,7 +65,6 @@ class Dashboard extends Component {
     dasboardData();
   }
 
-
   render() {
     const { dashboardList } = this.props;
     return (
@@ -71,7 +77,7 @@ class Dashboard extends Component {
           className='ag-theme-balham'
           style={{
             height: '400px',
-            width: '100%',
+            width: '99%',
           }}
         >
           <AgGridReact
@@ -87,7 +93,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("state----->", state);
+  console.log('state----->', state);
   return {
     dashboardList: state.dashboardAdminList,
   };

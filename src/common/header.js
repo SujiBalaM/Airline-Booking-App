@@ -21,11 +21,14 @@ const useStyles = (theme) => ({
 
 class Header extends Component {
   handleClick() {
-    const { history } = this.props;
-    history.push('login');
+    localStorage.clear('user');
+    window.location.reload();
+    this.props.history.push('/');
   }
   render() {
     const { classes } = this.props;
+    const { history } = this.props;
+
     return (
       <div className={classes.root}>
         <AppBar position='static'>
@@ -33,7 +36,9 @@ class Header extends Component {
             <Typography variant='h6' className={classes.title}>
               Welcome {user[0].first_name}
             </Typography>
-            <Button color='inherit'> Logout</Button>
+            <Button color='inherit' onClick={this.handleClick}>
+              Logout
+            </Button>
           </Toolbar>
         </AppBar>
       </div>
