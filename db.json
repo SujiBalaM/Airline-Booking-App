@@ -58,7 +58,7 @@
       "DOB": "07/06/85",
       "passportnumber": "AC123",
       "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": "req Food",
+      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
       "seatnumber": "F1"
     },
     {
@@ -333,7 +333,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "jsdkhfkjds",
       "address": "32, Eguvanampalle, Nampalle, Irala, Chittoor",
-      "ancillaryservices": "Req snacks",
+      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
       "seatnumber": "89"
     },
     {
@@ -344,7 +344,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "Q123",
       "address": "32, Eguvanampalle, Nampalle, Irala, Chittoor",
-      "ancillaryservices": "ksnxdksj",
+      "ancillaryservices": [],
       "seatnumber": "89"
     },
     {
@@ -355,7 +355,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "Asd345",
       "address": "#45,jsdhjkasdkaj",
-      "ancillaryservices": "Req Snack",
+      "ancillaryservices": [],
       "seatnumber": "Z56"
     },
     {
@@ -366,7 +366,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "msdnsdfn",
       "address": "nmdnfmfnsm",
-      "ancillaryservices": "msdnmdsnm",
+      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
       "seatnumber": "H67"
     },
     {
@@ -377,7 +377,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "",
       "address": "",
-      "ancillaryservices": "",
+      "ancillaryservices": [],
       "seatnumber": ""
     },
     {
@@ -388,7 +388,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "Asdxcvvxcvc",
       "address": "xcvcvxc",
-      "ancillaryservices": "xcvxcv",
+      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
       "seatnumber": "sdfs"
     },
     {
@@ -399,7 +399,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "",
       "address": "",
-      "ancillaryservices": "",
+      "ancillaryservices": [],
       "seatnumber": ""
     },
     {
@@ -410,7 +410,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "",
       "address": "",
-      "ancillaryservices": "",
+      "ancillaryservices": [],
       "seatnumber": ""
     },
     {
@@ -421,7 +421,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "a2345",
       "address": "SDMFSD,MF",
-      "ancillaryservices": "KDJFKFJS",
+      "ancillaryservices": [],
       "seatnumber": "KLDFKSDF"
     },
     {
@@ -432,7 +432,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "",
       "address": "skdskl",
-      "ancillaryservices": "ksdmms",
+      "ancillaryservices": [],
       "seatnumber": "A45"
     },
     {
@@ -443,7 +443,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "AS345i",
       "address": "msdnfmndm",
-      "ancillaryservices": "smdff",
+      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
       "seatnumber": "K45"
     },
     {
@@ -454,7 +454,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "nsmdmsn",
       "address": "msdnmsnmf",
-      "ancillaryservices": "msdnfmdnf",
+      "ancillaryservices": [],
       "seatnumber": "S67"
     },
     {
@@ -465,7 +465,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "",
       "address": "",
-      "ancillaryservices": "",
+      "ancillaryservices": [],
       "seatnumber": ""
     },
     {
@@ -476,7 +476,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "ASD7890",
       "address": "msndms,n",
-      "ancillaryservices": "ksjdksldm,",
+      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
       "seatnumber": "msdm,sfm,sd"
     },
     {
@@ -487,8 +487,16 @@
       "DOB": "2017-05-24",
       "passportnumber": "dfdmf",
       "address": "mdfd,mf",
-      "ancillaryservices": ",dmf,fm",
+      "ancillaryservices": [{"snacks":"Coke", "meal": "Coke"}],
       "seatnumber": "sd,mfsd,"
+    }
+  ],
+  "ancillaryservices": [
+    {
+      "id": 1,
+      "snacks": "Coke",
+      "meal": "Coke",
+      "drinks": "Coke"
     }
   ]
 }

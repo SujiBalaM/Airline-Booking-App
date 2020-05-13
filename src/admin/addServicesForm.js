@@ -4,6 +4,8 @@ import { DialogTitle } from '@material-ui/core';
 import { TextField, MenuItem, Button } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
+import { connect } from 'react-redux';
+import { addAncillery } from '../redux/ancillery/action';
 
 const useStyles = (theme) => ({
   root: {
@@ -32,6 +34,19 @@ class AddServicesForm extends Component {
   handleClose = () => {
     this.props.actionHandleClose();
   };
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+    console.log(data);
+    const formdata = {};
+    formdata.id = this.props.data.id;
+    formdata.snacks = data.get('snacks');
+    formdata.meal = data.get('meal');
+    formdata.drinks= data.get('drinks');
+    console.log(formdata);
+   this.props.addingServices(formdata);
+  }
   render() {
     const { classes } = this.props;
 
@@ -63,9 +78,11 @@ class AddServicesForm extends Component {
       { Drinks: 'Fresh Fruit Cocktail', Label: 'Cocktail' },
     ];
 
+    
+
     return (
       <div>
-        <Dialog>
+        <Dialog open={this.props.isOpen} >
           <DialogTitle id='form-dialog-title'>
             Add Anciallery Services
           </DialogTitle>
@@ -132,4 +149,15 @@ class AddServicesForm extends Component {
     );
   }
 }
-export default withStyles(useStyles)(AddServicesForm);
+
+const mapStateToProps = (state) => {
+  return {
+    addedAncillery: state.addAncillery,
+  }
+}
+const mapDispatchToProps =(dispatch) =>{
+  return{
+    addingServices:(formdata) => dispatch(addAncillery(formdata))
+  }
+}
+export default withStyles(useStyles)(connect(mapStateToProps, mapDispatchToProps)(AddServicesForm));

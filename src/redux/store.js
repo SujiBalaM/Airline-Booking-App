@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import loginReducer from './login';
 import dashboardReducer from './dashboard/index';
 import passengersReducer from './passengers/index';
+import ancilleryReducer from './ancillery/index';
 
 const middleWares = [thunk];
 
@@ -19,6 +20,7 @@ let rootReducer = combineReducers({
   loginlist: loginReducer,
   dashboardAdminList: dashboardReducer,
   submitPassengers: passengersReducer,
+  ancilleryServices: ancilleryReducer,
 });
 
 const initialState = window.__INITIAL_STATE__;

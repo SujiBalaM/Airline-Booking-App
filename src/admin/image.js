@@ -20,7 +20,7 @@ class ImageComponent extends Component {
     this.setState({ isOpen: false });
   }
   render() {
-    const { value } = this.props;
+    const { data } = this.props;
     console.log('state', this.state);
     console.log('props', this.props);
     return (
@@ -35,7 +35,7 @@ class ImageComponent extends Component {
           <DeleteIcon />
         </span>
 
-        <AddServicesForm isOpen={true} actionHandleClose={this.handleClose} />
+        <AddServicesForm data={this.props.data} isOpen={this.state.isOpen} actionHandleClose={this.handleClose} />
       </div>
     );
   }
