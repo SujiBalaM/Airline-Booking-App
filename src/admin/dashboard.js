@@ -10,10 +10,15 @@ import Header from '../common/header';
 import Button from '@material-ui/core/Button';
 import ImageComponent from '../admin/image';
 import AddPassengers from './addPassengers';
+import Search from '../common/search';
+import axios from 'axios';
+
 class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
+      searchPassengers: [],
+      alert: null,
       columnDefs: [
         { headerName: 'Sl.No', field: 'id', width: 75 },
         { headerName: 'First Name', field: 'firstname', width: 100 },
@@ -64,20 +69,44 @@ class Dashboard extends Component {
     const { dasboardData } = this.props;
     dasboardData();
   }
-
+  searchData = async (text) => {
+    const searchDetails = await axios.get(
+      `http://localhost:5000/rowData?q=${text}`
+    );
+    console.log(searchDetails);
+    this.setState({ searchPassengers: searchDetails.rowData });
+  };
+  clearData = () => {
+    this.setState({ searchPassengers: [] });
+  };
+  setAlert = (msg, type) => {
+    this.setState({ alert: { msg, type } });
+  };
   render() {
     const { dashboardList } = this.props;
+    console.log(this.props);
     return (
       <div>
         <Header />
         <h3>Passenger List</h3>
-        <AddPassengers />
+        <Search
+          searchPassengers={this.searchData}
+          clearPassengers={this.clearData}
+          showClear={this.state.searchPassengers.length > 0 ? true : false}
+          setAlert={this.setAlert}
+        />
+        <br />
+        <span>
+          <AddPassengers />
+        </span>
         <br />
         <div
           className='ag-theme-balham'
           style={{
             height: '400px',
             width: '99%',
+            marginLeft: '15px',
+            marginRight: '15px',
           }}
         >
           <AgGridReact

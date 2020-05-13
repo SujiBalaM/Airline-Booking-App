@@ -13,10 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 function AddPassengers() {
- 
-
   const [open, setOpen] = React.useState(false);
   const [gender, setGender] = React.useState('Male');
 
@@ -26,16 +23,23 @@ function AddPassengers() {
 
   const hanldeClose = (args) => {
     setOpen(false);
-  }
+  };
 
   return (
     <div>
-      <Button color='primary' variant='contained' onClick={handleClickOpen}>
+      <Button
+        color='primary'
+        variant='contained'
+        onClick={handleClickOpen}
+        style={{
+          marginRight: '10px',
+          marginLeft: '10px',
+        }}
+      >
         Add Passengers
       </Button>
 
-      <AddPassengerDialog isOpen={ open } actionHandleClose={ hanldeClose } />
-      
+      <AddPassengerDialog isOpen={open} actionHandleClose={hanldeClose} />
     </div>
   );
 }

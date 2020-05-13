@@ -41,7 +41,7 @@ const useStyles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding:'20px'
+    padding: '20px',
   },
   avatar: {
     margin: theme.spacing(1),
@@ -127,11 +127,6 @@ class Login extends Component {
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
             <Avatar className={classes.avatar}></Avatar>
-            <ToastContainer
-              enableMultiContainer
-              containerId={'A'}
-              position={toast.POSITION.TOP_RIGHT}
-            />
 
             <Typography component='h1' variant='h5'>
               Sign in
@@ -176,6 +171,7 @@ class Login extends Component {
               >
                 Sign In
               </Button>
+
               <ToastContainer />
 
               <Grid container>

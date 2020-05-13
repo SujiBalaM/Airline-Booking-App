@@ -10,6 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
+import { ToastContainer, toast } from 'react-toastify';
 
 const useStyles = (theme) => ({
   root: {
@@ -20,6 +21,11 @@ const useStyles = (theme) => ({
   },
 });
 class AddPassengerDialog extends Component {
+  successToast = () =>
+    toast.success('Passengers Added Successfully!', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+
   constructor(props) {
     super(props);
     this.state = {
@@ -56,15 +62,20 @@ class AddPassengerDialog extends Component {
     formdata.ancillaryservices = data.get('ancillary');
     formdata.seatnumber = data.get('seatnumber');
     this.props.addingPassengers(formdata);
+    this.successToast();
     // this.props.dasboardData()
   };
 
-  componentWillReceiveProps(nextProps,nextState){
-    const {addedPassengers, dasboardData} = this.props;
-    if(nextProps.addedPassengers.isDataPending===false && addedPassengers.isDataPending === true){
-      if(nextProps.addedPassengers.isDataSuccess === true){
+  componentWillReceiveProps(nextProps, nextState) {
+    const { addedPassengers, dasboardData } = this.props;
+    if (
+      nextProps.addedPassengers.isDataPending === false &&
+      addedPassengers.isDataPending === true
+    ) {
+      if (nextProps.addedPassengers.isDataSuccess === true) {
         this.props.actionHandleClose();
         dasboardData();
+        this.successToast();
       }
     }
   }
@@ -134,6 +145,7 @@ class AddPassengerDialog extends Component {
               <Button type='submit' name='submit' color='primary'>
                 Submit
               </Button>
+              <ToastContainer autoClose={15000} />
             </DialogActions>
           </form>
         </Dialog>
@@ -142,15 +154,15 @@ class AddPassengerDialog extends Component {
   }
 }
 const mapStateToProps = (state) => {
-   return {
-     addedPassengers: state.submitPassengers,
-   };
- };
+  return {
+    addedPassengers: state.submitPassengers,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addingPassengers: (formdata) => dispatch(addPassengers(formdata)),
-    dasboardData: () => dispatch(dasboardData())
+    dasboardData: () => dispatch(dasboardData()),
   };
 };
 
