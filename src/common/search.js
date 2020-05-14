@@ -5,11 +5,12 @@ const Search = ({ searchPassengers, clearPassengers, showClear, setAlert }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    console.log("text", text);
     if (text === '') {
       setAlert('Please Enter Something', 'light');
     } else {
       searchPassengers(text);
-      setText('');
+      // setText('');
     }
   };
   const onChange = (e) => setText(e.target.value);

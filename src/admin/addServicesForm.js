@@ -23,10 +23,11 @@ const useStyles = (theme) => ({
 class AddServicesForm extends Component {
   constructor(props) {
     super(props);
+    console.log("asdsdasdasdad------------------->", props);
     this.state = {
-      mealOption: '',
-      snacksOption: '',
-      drinksOption: '',
+      meals: props.asData.meals || "",
+      snacks: props.asData.snacks || "",
+      drinks: props.asData.drinks || "",
       isOpen: false,
     };
   }
@@ -35,9 +36,7 @@ class AddServicesForm extends Component {
     this.setState({ isOpen: !isOpen });
   };
   handleChange = (event) => {
-    this.setState({ mealOption: event.target.value });
-    this.setState({ snacksOption: event.target.value });
-    this.setState({ drinksOption: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
   handleClose = (e) => {
     e.preventDefault();
@@ -51,11 +50,33 @@ class AddServicesForm extends Component {
     const formdata = {};
     formdata.id = this.props.data.id;
     formdata.snacks = data.get('snacks');
-    formdata.meal = data.get('meal');
+    formdata.meals = data.get('meals');
     formdata.drinks = data.get('drinks');
     console.log(formdata);
     this.props.addingServices(formdata);
+    this.props.actionHandleClose();
+
   };
+  handleUpdate = (event) => {
+    
+    const formdata = {};
+    formdata.id = this.props.data.id;
+    formdata.snacks = this.state.snacksOption;
+    formdata.meal = this.state.mealOption;
+    formdata.drinks = this.state.drinksOption;
+    this.props.updatingServices(formdata);
+  }
+
+  componentWillReceiveProps(nextProps, nextState){
+    const { data} = this.props;
+    console.log("food",nextProps)
+  if(nextProps.asData.length !== 0){
+    console.log("food------------>",nextProps)
+     this.setState({meals:nextProps.asData.meals,
+      snacks:nextProps.asData.snacks});
+  }
+  }
+  
   render() {
     const { classes } = this.props;
 
@@ -86,7 +107,7 @@ class AddServicesForm extends Component {
       { Drinks: 'Sweet-Lime Juice', Label: 'Sweet-lime' },
       { Drinks: 'Fresh Fruit Cocktail', Label: 'Cocktail' },
     ];
-
+    console.log("test", this.props.data)
     return (
       <div>
         <Dialog open={this.props.isOpen} onClose={this.handleClickOpen}>
@@ -95,10 +116,10 @@ class AddServicesForm extends Component {
           </DialogTitle>
           <form className={classes.root} onSubmit={this.handleSubmit}>
             <TextField
-              name='meal'
+              name='meals'
               select
               label='Select'
-              value={this.state.mealOption}
+              value={this.state.meals}
               onChange={this.handleChange}
               helperText='Please select your meal'
             >
@@ -112,7 +133,7 @@ class AddServicesForm extends Component {
               name='snacks'
               select
               label='Select'
-              value={this.state.snacksOption}
+              value={this.state.snacks}
               onChange={this.handleChange}
               helperText='Please select your snack'
             >
@@ -126,7 +147,7 @@ class AddServicesForm extends Component {
               name='drinks'
               select
               label='Select'
-              value={this.state.drinksOption}
+              value={this.state.drinks}
               onChange={this.handleChange}
               helperText='Please select your drinks'
             >
@@ -140,15 +161,13 @@ class AddServicesForm extends Component {
               <Button onClick={this.handleClose} name='cancel' color='primary'>
                 Cancel
               </Button>
-              <Button type='submit' name='submit' color='primary'>
+              <Button type='submit' name='submit' color='primary' >
                 Add
               </Button>
-              <Button type='submit' name='submit' color='primary'>
+              <Button type='submit' name='update' color='primary' onClick={this.handleUpdate}>
                 Update
               </Button>
-              <Button type='submit' name='submit' color='primary'>
-                Delete
-              </Button>
+              
             </DialogActions>
           </form>
         </Dialog>
@@ -165,8 +184,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addingServices: (formdata) => dispatch(addAncillery(formdata)),
-    updatingServices: (formdata) => dispatch(updateAncillery(formdata)),
-    deletingServices: (formdata) => dispatch(deleteAncillery(formdata)),
+    updatingServices: (id) => dispatch(updateAncillery(id)),
   };
 };
 export default withStyles(useStyles)(

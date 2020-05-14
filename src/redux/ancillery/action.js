@@ -8,7 +8,7 @@ import axios from 'axios';
 export function addAncillery(args) {
   return (dispatch) => {
     axios
-      .post('http://localhost:5000/ancillaryServices', args)
+      .post('http://localhost:5000/ancillaryservices', args)
       .then((response) => {
         console.log(response);
       })
@@ -18,10 +18,10 @@ export function addAncillery(args) {
   };
 }
 
-export function deleteAncillery(args) {
+export function deleteAncillery(id) {
   return (dispatch) => {
     axios
-      .delete('http://localhost:5000/ancillaryServices/1/', args)
+      .delete(`http://localhost:5000/ancillaryservices/${id}`,id)
       .then((response) => {
         console.log(response);
       })
@@ -31,10 +31,10 @@ export function deleteAncillery(args) {
   };
 }
 
-export function updateAncillery(args) {
+export function updateAncillery(id) {
   return (dispatch) => {
     axios
-      .put('http://localhost:5000/ancillaryServices/${id}', args)
+      .put(`http://localhost:5000/ancillaryservices/${id}`,id)
       .then((response) => {
         console.log(response);
       })

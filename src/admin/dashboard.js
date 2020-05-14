@@ -18,7 +18,7 @@ class Dashboard extends Component {
     super();
     this.state = {
       searchPassengers: [],
-      alert: null,
+      alert: {},
       columnDefs: [
         { headerName: 'Sl.No', field: 'id', width: 75 },
         { headerName: 'First Name', field: 'firstname', width: 100 },
@@ -73,8 +73,8 @@ class Dashboard extends Component {
     const searchDetails = await axios.get(
       `http://localhost:5000/rowData?q=${text}`
     );
-    console.log(searchDetails);
-    this.setState({ searchPassengers: searchDetails.rowData });
+    console.log("searchDetails---->", searchDetails);
+    this.setState({ searchPassengers: searchDetails });
   };
   clearData = () => {
     this.setState({ searchPassengers: [] });
@@ -84,7 +84,11 @@ class Dashboard extends Component {
   };
   render() {
     const { dashboardList } = this.props;
-    console.log(this.props);
+    const { searchPassengers } = this.state;
+    
+    const datas = searchPassengers.length == 0 ? dashboardList : searchPassengers ;
+    console.log("datas------------------>", datas);
+    console.log("searchPassengers.length------------------>", searchPassengers.length);
     return (
       <div>
         <Header />
@@ -92,9 +96,10 @@ class Dashboard extends Component {
         <Search
           searchPassengers={this.searchData}
           clearPassengers={this.clearData}
-          showClear={this.state.searchPassengers.length > 0 ? true : false}
+          showClear={searchPassengers.length !== 0 ? true : false}
           setAlert={this.setAlert}
         />
+        {this.state.alert && this.state.alert.msg}
         <br />
         <span>
           <AddPassengers />
@@ -112,7 +117,7 @@ class Dashboard extends Component {
           <AgGridReact
             columnDefs={this.state.columnDefs}
             frameworkComponents={this.state.frameworkComponents}
-            rowData={dashboardList.data}
+            rowData={datas.data}
           ></AgGridReact>
         </div>
         <Footer />
@@ -122,7 +127,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state----->', state);
+  console.log('stateasdasasd----->', state);
   return {
     dashboardList: state.dashboardAdminList,
   };
