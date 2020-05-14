@@ -29,13 +29,17 @@ class ImageComponent extends Component {
           <AddIcon onClick={this.handleClickOpen} />
         </span>
         <span>
-          <CreateIcon />
+          <CreateIcon onClick={this.handleClickOpen} />
         </span>
         <span>
-          <DeleteIcon />
+          <DeleteIcon onClick={this.handleClickOpen} />
         </span>
 
-        <AddServicesForm data={this.props.data} isOpen={this.state.isOpen} actionHandleClose={this.handleClose} />
+        <AddServicesForm
+          data={this.props.data}
+          isOpen={this.state.isOpen}
+          actionHandleClose={this.handleClose}
+        />
       </div>
     );
   }

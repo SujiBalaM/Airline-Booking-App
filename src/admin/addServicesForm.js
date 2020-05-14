@@ -5,7 +5,11 @@ import { TextField, MenuItem, Button } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import { connect } from 'react-redux';
-import { addAncillery } from '../redux/ancillery/action';
+import {
+  addAncillery,
+  updateAncillery,
+  deleteAncillery,
+} from '../redux/ancillery/action';
 
 const useStyles = (theme) => ({
   root: {
@@ -23,15 +27,20 @@ class AddServicesForm extends Component {
       mealOption: '',
       snacksOption: '',
       drinksOption: '',
+      isOpen: false,
     };
   }
-
+  handleClickOpen = () => {
+    const { isOpen } = this.state;
+    this.setState({ isOpen: !isOpen });
+  };
   handleChange = (event) => {
     this.setState({ mealOption: event.target.value });
     this.setState({ snacksOption: event.target.value });
     this.setState({ drinksOption: event.target.value });
   };
-  handleClose = () => {
+  handleClose = (e) => {
+    e.preventDefault();
     this.props.actionHandleClose();
   };
   handleSubmit = (event) => {
@@ -43,10 +52,10 @@ class AddServicesForm extends Component {
     formdata.id = this.props.data.id;
     formdata.snacks = data.get('snacks');
     formdata.meal = data.get('meal');
-    formdata.drinks= data.get('drinks');
+    formdata.drinks = data.get('drinks');
     console.log(formdata);
-   this.props.addingServices(formdata);
-  }
+    this.props.addingServices(formdata);
+  };
   render() {
     const { classes } = this.props;
 
@@ -78,11 +87,9 @@ class AddServicesForm extends Component {
       { Drinks: 'Fresh Fruit Cocktail', Label: 'Cocktail' },
     ];
 
-    
-
     return (
       <div>
-        <Dialog open={this.props.isOpen} >
+        <Dialog open={this.props.isOpen} onClose={this.handleClickOpen}>
           <DialogTitle id='form-dialog-title'>
             Add Anciallery Services
           </DialogTitle>
@@ -153,11 +160,15 @@ class AddServicesForm extends Component {
 const mapStateToProps = (state) => {
   return {
     addedAncillery: state.addAncillery,
-  }
-}
-const mapDispatchToProps =(dispatch) =>{
-  return{
-    addingServices:(formdata) => dispatch(addAncillery(formdata))
-  }
-}
-export default withStyles(useStyles)(connect(mapStateToProps, mapDispatchToProps)(AddServicesForm));
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addingServices: (formdata) => dispatch(addAncillery(formdata)),
+    updatingServices: (formdata) => dispatch(updateAncillery(formdata)),
+    deletingServices: (formdata) => dispatch(deleteAncillery(formdata)),
+  };
+};
+export default withStyles(useStyles)(
+  connect(mapStateToProps, mapDispatchToProps)(AddServicesForm)
+);

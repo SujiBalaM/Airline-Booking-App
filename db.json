@@ -58,7 +58,12 @@
       "DOB": "07/06/85",
       "passportnumber": "AC123",
       "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
+      "ancillaryservices": [
+        {
+          "snacks": "Coke",
+          "meal": "Coke"
+        }
+      ],
       "seatnumber": "F1"
     },
     {
@@ -333,7 +338,12 @@
       "DOB": "2017-05-24",
       "passportnumber": "jsdkhfkjds",
       "address": "32, Eguvanampalle, Nampalle, Irala, Chittoor",
-      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
+      "ancillaryservices": [
+        {
+          "snacks": "Coke",
+          "meal": "Coke"
+        }
+      ],
       "seatnumber": "89"
     },
     {
@@ -366,7 +376,12 @@
       "DOB": "2017-05-24",
       "passportnumber": "msdnsdfn",
       "address": "nmdnfmfnsm",
-      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
+      "ancillaryservices": [
+        {
+          "snacks": "Coke",
+          "meal": "Coke"
+        }
+      ],
       "seatnumber": "H67"
     },
     {
@@ -388,7 +403,12 @@
       "DOB": "2017-05-24",
       "passportnumber": "Asdxcvvxcvc",
       "address": "xcvcvxc",
-      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
+      "ancillaryservices": [
+        {
+          "snacks": "Coke",
+          "meal": "Coke"
+        }
+      ],
       "seatnumber": "sdfs"
     },
     {
@@ -443,7 +463,12 @@
       "DOB": "2017-05-24",
       "passportnumber": "AS345i",
       "address": "msdnfmndm",
-      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
+      "ancillaryservices": [
+        {
+          "snacks": "Coke",
+          "meal": "Coke"
+        }
+      ],
       "seatnumber": "K45"
     },
     {
@@ -476,7 +501,12 @@
       "DOB": "2017-05-24",
       "passportnumber": "ASD7890",
       "address": "msndms,n",
-      "ancillaryservices":  [{"snacks":"Coke", "meal": "Coke"}],
+      "ancillaryservices": [
+        {
+          "snacks": "Coke",
+          "meal": "Coke"
+        }
+      ],
       "seatnumber": "msdm,sfm,sd"
     },
     {
@@ -487,7 +517,12 @@
       "DOB": "2017-05-24",
       "passportnumber": "dfdmf",
       "address": "mdfd,mf",
-      "ancillaryservices": [{"snacks":"Coke", "meal": "Coke"}],
+      "ancillaryservices": [
+        {
+          "snacks": "Coke",
+          "meal": "Coke"
+        }
+      ],
       "seatnumber": "sd,mfsd,"
     }
   ],
@@ -497,6 +532,12 @@
       "snacks": "Coke",
       "meal": "Coke",
       "drinks": "Coke"
+    },
+    {
+      "id": 2,
+      "snacks": "Sweet-Lime Juice",
+      "meal": "Sweet-Lime Juice",
+      "drinks": "Sweet-Lime Juice"
     }
   ]
 }
