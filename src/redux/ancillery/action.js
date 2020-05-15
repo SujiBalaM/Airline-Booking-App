@@ -2,18 +2,23 @@ import {
   ADDANCILLERY_PENDING,
   ADDANCILLERY_SUCCESS,
   ADDANCILLERY_FAILURE,
+  EDITANCILLERY_PENDING,
+  EDITANCILLERY_SUCCESS,
+  EDITANCILLERY_FAILURE,
 } from '../ancillery/index';
 import axios from 'axios';
 
 export function addAncillery(args) {
   return (dispatch) => {
+    dispatch({ type: ADDANCILLERY_PENDING });
     axios
       .post('http://localhost:5000/ancillaryservices', args)
       .then((response) => {
         console.log(response);
+        dispatch({ type: ADDANCILLERY_SUCCESS, args });
       })
       .catch((error) => {
-        console.log(error);
+        dispatch({ type: ADDANCILLERY_FAILURE });
       });
   };
 }
@@ -21,7 +26,7 @@ export function addAncillery(args) {
 export function deleteAncillery(id) {
   return (dispatch) => {
     axios
-      .delete(`http://localhost:5000/ancillaryservices/${id}`,id)
+      .delete(`http://localhost:5000/ancillaryservices/${id}`, id)
       .then((response) => {
         console.log(response);
       })
@@ -33,13 +38,15 @@ export function deleteAncillery(id) {
 
 export function updateAncillery(id) {
   return (dispatch) => {
+    dispatch({ type: EDITANCILLERY_PENDING });
     axios
-      .put(`http://localhost:5000/ancillaryservices/${id}`,id)
+      .put(`http://localhost:5000/ancillaryservices/${id}`, id)
       .then((response) => {
         console.log(response);
+        dispatch({ type: EDITANCILLERY_SUCCESS, id });
       })
       .catch((error) => {
-        console.log(error);
+        dispatch({ type: EDITANCILLERY_FAILURE });
       });
   };
 }

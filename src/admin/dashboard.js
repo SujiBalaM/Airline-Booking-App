@@ -65,6 +65,26 @@ class Dashboard extends Component {
     console.log('click');
   };
 
+  // fetchingRowData = () => {
+  //   let datas = this.props.dashboardList.data;
+  //   console.log(datas, '-in start of fetching routw dat');
+  //   for (let i = 0; i < datas.length; i++) {
+  //     if (typeof datas[i].ancillaryservices == 'object') {
+  //       let stringservices = '';
+  //       for (let j = 0; j < datas[i].ancillaryservices.length; j++) {
+  //         let arrayelement = Object.entries(datas[i].ancillaryservices[j]).map(
+  //           (value) => {
+  //             return value[1];
+  //           }
+  //         );
+  //         stringservices = arrayelement.toString();
+  //       }
+  //       datas[i].ancillaryservices = stringservices;
+  //     }
+  //   }
+  //   console.log(datas, ' ==========in end od fet');
+  //   return datas;
+  // };
   componentDidMount() {
     const { dasboardData } = this.props;
     dasboardData();
@@ -73,7 +93,7 @@ class Dashboard extends Component {
     const searchDetails = await axios.get(
       `http://localhost:5000/rowData?q=${text}`
     );
-    console.log("searchDetails---->", searchDetails);
+    console.log('searchDetails---->', searchDetails);
     this.setState({ searchPassengers: searchDetails });
   };
   clearData = () => {
@@ -85,14 +105,15 @@ class Dashboard extends Component {
   render() {
     const { dashboardList } = this.props;
     const { searchPassengers } = this.state;
-    
-    const datas = searchPassengers.length == 0 ? dashboardList : searchPassengers ;
-    console.log("datas------------------>", datas);
-    console.log("searchPassengers.length------------------>", searchPassengers.length);
+
+    const datas =
+      searchPassengers.length == 0 ? dashboardList : searchPassengers;
+    console.log('datas------------------>', datas);
+    console.log('searchPassengers.length------------------>', datas.data);
     return (
       <div>
         <Header />
-        <h3>Passenger List</h3>
+        <br />
         <Search
           searchPassengers={this.searchData}
           clearPassengers={this.clearData}

@@ -74,7 +74,7 @@
       "DOB": "07/06/82",
       "passportnumber": "AC143",
       "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": "req Food",
+      "ancillaryservices": [],
       "seatnumber": "F2"
     },
     {
@@ -85,7 +85,7 @@
       "DOB": "24/10/10",
       "passportnumber": "AC113",
       "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": "req Food",
+      "ancillaryservices": [],
       "seatnumber": "F3"
     },
     {
@@ -96,7 +96,7 @@
       "DOB": "27/08/14",
       "passportnumber": "AC133",
       "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": "req Food",
+      "ancillaryservices": [],
       "seatnumber": "F4"
     },
     {
@@ -107,7 +107,7 @@
       "DOB": "16/06/98",
       "passportnumber": "AC193",
       "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": "req Food",
+      "ancillaryservices": [],
       "seatnumber": "F5"
     },
     {
@@ -118,7 +118,7 @@
       "DOB": "30/08/94",
       "passportnumber": "AC183",
       "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": "req Food",
+      "ancillaryservices": [],
       "seatnumber": "F6"
     },
     {
@@ -129,7 +129,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "Q123",
       "address": "kjshdjkhfkj",
-      "ancillaryservices": "skjdfkjdsf",
+      "ancillaryservices": [],
       "seatnumber": "A34"
     },
     {
@@ -140,7 +140,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "sjncdjsfkjs",
       "address": "jsadhkjshdkj",
-      "ancillaryservices": "kjsdcksdfks",
+      "ancillaryservices": [],
       "seatnumber": "89"
     },
     {
@@ -151,7 +151,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "A123456789",
       "address": "hjjkjl;",
-      "ancillaryservices": "Req snacks",
+      "ancillaryservices": [],
       "seatnumber": "89"
     },
     {
@@ -162,7 +162,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "Asdjjkk",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": "skjdfkjdsf",
+      "ancillaryservices": [],
       "seatnumber": "dfsmdsf"
     },
     {
@@ -173,7 +173,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "Q123",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": "skjdfkjdsf",
+      "ancillaryservices": [],
       "seatnumber": "dfsmdsf"
     },
     {
@@ -184,7 +184,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "Q123",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": "skjdfkjdsf",
+      "ancillaryservices": [],
       "seatnumber": "dfsmdsf"
     },
     {
@@ -195,7 +195,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "B12345",
       "address": "Krishnagiri",
-      "ancillaryservices": "Req drinks",
+      "ancillaryservices": [],
       "seatnumber": "S9"
     },
     {
@@ -206,7 +206,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "B12345",
       "address": "Krishnagiri",
-      "ancillaryservices": "Req drinks",
+      "ancillaryservices": [],
       "seatnumber": "S9"
     },
     {
@@ -217,7 +217,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "Q12390",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": "Req snacks",
+      "ancillaryservices": [],
       "seatnumber": "O09"
     },
     {
@@ -228,7 +228,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "Q12390",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": "Req snacks",
+      "ancillaryservices": [],
       "seatnumber": "O09"
     },
     {
@@ -239,7 +239,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "A123456789",
       "address": "32, Eguvanampalle, Nampalle, Irala, Chittoor",
-      "ancillaryservices": "",
+      "ancillaryservices": [],
       "seatnumber": "89A"
     },
     {
@@ -250,7 +250,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "nm,./;",
       "address": "",
-      "ancillaryservices": "",
+      "ancillaryservices": [],
       "seatnumber": ""
     },
     {
@@ -261,7 +261,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "",
       "address": "",
-      "ancillaryservices": "",
+      "ancillaryservices": [],
       "seatnumber": ""
     },
     {
@@ -272,7 +272,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "Q123",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": "skjdfkjdsf",
+      "ancillaryservices": [],
       "seatnumber": "89"
     },
     {
@@ -283,7 +283,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "Q123",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": "skjdfkjdsf",
+      "ancillaryservices": [],
       "seatnumber": "89"
     },
     {
@@ -294,7 +294,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "A345",
       "address": "47,kubera flats",
-      "ancillaryservices": "Req food",
+      "ancillaryservices": [],
       "seatnumber": "W12"
     },
     {
@@ -305,7 +305,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "A345",
       "address": "47,kubera flats",
-      "ancillaryservices": "Req food",
+      "ancillaryservices": [],
       "seatnumber": "W12"
     },
     {
@@ -316,7 +316,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "jsdkhfkjds",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": "Req snacks",
+      "ancillaryservices": [],
       "seatnumber": "r45"
     },
     {
@@ -327,7 +327,9 @@
       "DOB": "2017-05-24",
       "passportnumber": "jsdkhfkjds",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": "Req snacks",
+      "ancillaryservices": [
+        {}
+      ],
       "seatnumber": "r45"
     },
     {
@@ -490,7 +492,12 @@
       "DOB": "2017-05-24",
       "passportnumber": "",
       "address": "",
-      "ancillaryservices": [],
+      "ancillaryservices": [
+        {
+          "snacks": "Cokjhkjhkjhkke",
+          "meal": "Cokejghjgj"
+        }
+      ],
       "seatnumber": ""
     },
     {
@@ -533,7 +540,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": "",
+      "ancillaryservices": [],
       "seatnumber": ""
     },
     {
@@ -544,7 +551,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "",
       "address": "",
-      "ancillaryservices": "",
+      "ancillaryservices": [],
       "seatnumber": ""
     },
     {
@@ -555,8 +562,21 @@
       "DOB": "2017-05-24",
       "passportnumber": "",
       "address": "32, Eguvanampalle, Nampalle, Irala, Chittoor",
-      "ancillaryservices": "",
+      "ancillaryservices": [],
       "seatnumber": ""
+    },
+    {
+      "id": "973751",
+      "firstname": "s1",
+      "lastname": "s2",
+      "gender": "Female",
+      "DOB": "2017-05-24",
+      "passportnumber": "123123",
+      "address": "123",
+      "ancillaryservices": [
+        {}
+      ],
+      "seatnumber": "123"
     }
   ],
   "ancillaryservices": [
@@ -577,12 +597,6 @@
       "snacks": null,
       "meals": null,
       "drinks": null
-    },
-    {
-      "id": 1,
-      "snacks": "Fried Almond",
-      "meals": "Veg meal special",
-      "drinks": "Sweet-Lime Juice"
     },
     {
       "id": 5,

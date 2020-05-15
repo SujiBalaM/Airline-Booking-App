@@ -23,11 +23,19 @@ const useStyles = (theme) => ({
 class AddServicesForm extends Component {
   constructor(props) {
     super(props);
-    console.log("asdsdasdasdad------------------->", props);
+    console.log('asdsdasdasdad------------------->', props);
     this.state = {
-      meals: props.asData.meals || "",
-      snacks: props.asData.snacks || "",
-      drinks: props.asData.drinks || "",
+      meals: props.asData ? (props.asData.meals ? props.asData.meals : '') : '',
+      snacks: props.asData
+        ? props.asData.snacks
+          ? props.asData.snacks
+          : ''
+        : '',
+      drinks: props.asData
+        ? props.asData.drinks
+          ? props.asData.drinks
+          : ''
+        : '',
       isOpen: false,
     };
   }
@@ -42,43 +50,47 @@ class AddServicesForm extends Component {
     e.preventDefault();
     this.props.actionHandleClose();
   };
-  handleSubmit = (event) => {
+  handleSubmit = (event, type) => {
     event.preventDefault();
     const form = event.target;
     const data = new FormData(form);
     console.log(data);
     const formdata = {};
-    formdata.id = this.props.data.id;
-    formdata.snacks = data.get('snacks');
-    formdata.meals = data.get('meals');
-    formdata.drinks = data.get('drinks');
-    console.log(formdata);
-    this.props.addingServices(formdata);
-    this.props.actionHandleClose();
 
+    if (type == 'add') {
+      formdata.id = this.props.data.id;
+      formdata.snacks = data.get('snacks');
+      formdata.meals = data.get('meals');
+      formdata.drinks = data.get('drinks');
+      console.log(formdata);
+      this.props.addingServices(formdata);
+      this.props.actionHandleClose();
+    } else {
+      formdata.id = this.props.data.id;
+      formdata.snacks = this.state.snacks;
+      formdata.meals = this.state.meals;
+      formdata.drinks = this.state.drinks;
+      this.props.updatingServices(formdata);
+    }
   };
   handleUpdate = (event) => {
-    
     const formdata = {};
-    formdata.id = this.props.data.id;
-    formdata.snacks = this.state.snacksOption;
-    formdata.meal = this.state.mealOption;
-    formdata.drinks = this.state.drinksOption;
-    this.props.updatingServices(formdata);
+  };
+
+  componentWillReceiveProps(nextProps, nextState) {
+    const { data } = this.props;
+    console.log('food', nextProps);
+    if (nextProps.asData.length !== 0) {
+      console.log('food------------>', nextProps);
+      this.setState({
+        meals: nextProps.asData.meals,
+        snacks: nextProps.asData.snacks,
+      });
+    }
   }
 
-  componentWillReceiveProps(nextProps, nextState){
-    const { data} = this.props;
-    console.log("food",nextProps)
-  if(nextProps.asData.length !== 0){
-    console.log("food------------>",nextProps)
-     this.setState({meals:nextProps.asData.meals,
-      snacks:nextProps.asData.snacks});
-  }
-  }
-  
   render() {
-    const { classes } = this.props;
+    const { classes, currentmode } = this.props;
 
     const meal = [
       {
@@ -107,14 +119,14 @@ class AddServicesForm extends Component {
       { Drinks: 'Sweet-Lime Juice', Label: 'Sweet-lime' },
       { Drinks: 'Fresh Fruit Cocktail', Label: 'Cocktail' },
     ];
-    console.log("test", this.props.data)
+    console.log('test', this.props.data);
     return (
       <div>
         <Dialog open={this.props.isOpen} onClose={this.handleClickOpen}>
           <DialogTitle id='form-dialog-title'>
             Add Anciallery Services
           </DialogTitle>
-          <form className={classes.root} onSubmit={this.handleSubmit}>
+          <form className={classes.root}>
             <TextField
               name='meals'
               select
@@ -161,13 +173,25 @@ class AddServicesForm extends Component {
               <Button onClick={this.handleClose} name='cancel' color='primary'>
                 Cancel
               </Button>
-              <Button type='submit' name='submit' color='primary' >
-                Add
-              </Button>
-              <Button type='submit' name='update' color='primary' onClick={this.handleUpdate}>
-                Update
-              </Button>
-              
+              {currentmode == 'add' ? (
+                <Button
+                  type='submit'
+                  name='submit'
+                  color='primary'
+                  onSubmit={(e) => this.handleSubmit(e, 'add')}
+                >
+                  Add
+                </Button>
+              ) : (
+                <Button
+                  type='submit'
+                  name='update'
+                  color='primary'
+                  onSubmit={(e) => this.handleSubmit(e, 'edit')}
+                >
+                  Update
+                </Button>
+              )}
             </DialogActions>
           </form>
         </Dialog>
