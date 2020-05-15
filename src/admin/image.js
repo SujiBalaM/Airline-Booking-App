@@ -9,6 +9,8 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import { connect } from 'react-redux';
 import { deleteAncillery } from '../redux/ancillery/action';
+import { dasboardData } from '../redux/dashboard/action';
+
 
 class ImageComponent extends Component {
   constructor(props) {
@@ -44,8 +46,11 @@ class ImageComponent extends Component {
     this.props.deletingServices(id);
   }
   handleDelete = (event) => {
+    const {dasboardData} = this.props;
     const id = this.props.data.id;
     this.props.deletingServices(id);
+    window.location.reload();
+    this.props.dasboardData();
   };
 
   clickClose() {
@@ -109,6 +114,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     deletingServices: (id) => dispatch(deleteAncillery(id)),
+    dasboardData: () => dispatch(dasboardData())
+
   };
 };
 

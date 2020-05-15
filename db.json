@@ -582,21 +582,21 @@
   "ancillaryservices": [
     {
       "id": "121",
-      "snacks": "Apple Juice",
-      "meals": "Apple Juice",
+      "snacks": "Fried Cashew",
+      "meals": "Veg meal special",
       "drinks": "Apple Juice"
     },
     {
       "id": "0008",
-      "snacks": "Coke",
-      "meals": "Coke",
+      "snacks": "Fried Cashew",
+      "meals": "Veg meal special",
       "drinks": "Coke"
     },
     {
       "id": "890",
-      "snacks": null,
-      "meals": null,
-      "drinks": null
+      "snacks": "Fried Cashew",
+      "meals": "Veg meal",
+      "drinks": "Fresh Fruit Cocktail"
     },
     {
       "id": 5,
@@ -605,10 +605,16 @@
       "drinks": "Sweet-Lime Juice"
     },
     {
-      "id": "5586",
+      "id": "973751",
       "snacks": "Fried Cashew Pepper",
+      "meals": "Veg meal",
+      "drinks": "Coke"
+    },
+    {
+      "id": 1,
+      "snacks": "Fried Almonds Pepper",
       "meals": "Veg meal special",
-      "drinks": "Sweet-Lime Juice"
+      "drinks": "Apple Juice"
     }
   ]
 }

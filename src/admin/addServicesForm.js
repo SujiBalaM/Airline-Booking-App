@@ -10,6 +10,7 @@ import {
   updateAncillery,
   deleteAncillery,
 } from '../redux/ancillery/action';
+import { dasboardData } from '../redux/dashboard/action';
 
 const useStyles = (theme) => ({
   root: {
@@ -23,7 +24,6 @@ const useStyles = (theme) => ({
 class AddServicesForm extends Component {
   constructor(props) {
     super(props);
-    console.log('asdsdasdasdad------------------->', props);
     this.state = {
       meals: props.asData ? (props.asData.meals ? props.asData.meals : '') : '',
       snacks: props.asData
@@ -50,19 +50,18 @@ class AddServicesForm extends Component {
     e.preventDefault();
     this.props.actionHandleClose();
   };
-  handleSubmit = (event, type) => {
+  handleSubmit = (event) => {
     event.preventDefault();
+    const {asData} = this.props;
     const form = event.target;
     const data = new FormData(form);
-    console.log(data);
     const formdata = {};
-
-    if (type == 'add') {
+    console.log("handleSubmit---------------->", asData);
+    if(asData.length === 0){
       formdata.id = this.props.data.id;
       formdata.snacks = data.get('snacks');
       formdata.meals = data.get('meals');
       formdata.drinks = data.get('drinks');
-      console.log(formdata);
       this.props.addingServices(formdata);
       this.props.actionHandleClose();
     } else {
@@ -72,24 +71,25 @@ class AddServicesForm extends Component {
       formdata.drinks = this.state.drinks;
       this.props.updatingServices(formdata);
     }
+
+
+       this.props.dasboardData();
+    
+    
   };
   handleUpdate = (event) => {
     const formdata = {};
+      formdata.id = this.props.data.id;
+      formdata.snacks = this.state.snacks;
+      formdata.meals = this.state.meals;
+      formdata.drinks = this.state.drinks;
+      this.props.updatingServices(formdata);
+      console.log("handleUpdate---------------->", formdata);
+     // this.props.dasboardData();
+
   };
 
-  componentWillReceiveProps(nextProps, nextState) {
-    const { data } = this.props;
-    console.log('food', nextProps);
-    if (nextProps.asData.length !== 0) {
-      console.log('food------------>', nextProps);
-      this.setState({
-        meals: nextProps.asData.meals,
-        snacks: nextProps.asData.snacks,
-      });
-    }
-  }
-
-  render() {
+   render() {
     const { classes, currentmode } = this.props;
 
     const meal = [
@@ -126,7 +126,7 @@ class AddServicesForm extends Component {
           <DialogTitle id='form-dialog-title'>
             Add Anciallery Services
           </DialogTitle>
-          <form className={classes.root}>
+          <form className={classes.root} onSubmit={this.handleSubmit}>
             <TextField
               name='meals'
               select
@@ -173,25 +173,24 @@ class AddServicesForm extends Component {
               <Button onClick={this.handleClose} name='cancel' color='primary'>
                 Cancel
               </Button>
-              {currentmode == 'add' ? (
+              {currentmode == 'add'? 
                 <Button
                   type='submit'
                   name='submit'
                   color='primary'
-                  onSubmit={(e) => this.handleSubmit(e, 'add')}
+                //onClick={this.handleSubmit}
                 >
                   Add
-                </Button>
-              ) : (
+                </Button>:
                 <Button
                   type='submit'
                   name='update'
                   color='primary'
-                  onSubmit={(e) => this.handleSubmit(e, 'edit')}
                 >
                   Update
                 </Button>
-              )}
+  }
+              
             </DialogActions>
           </form>
         </Dialog>
@@ -209,6 +208,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addingServices: (formdata) => dispatch(addAncillery(formdata)),
     updatingServices: (id) => dispatch(updateAncillery(id)),
+    dasboardData: () => dispatch(dasboardData())
   };
 };
 export default withStyles(useStyles)(

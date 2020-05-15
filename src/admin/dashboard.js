@@ -34,8 +34,8 @@ class Dashboard extends Component {
         { headerName: 'Address', field: 'address', filter: true, width: 175 },
         {
           headerName: 'Ancillary Services',
-          field: 'ancillaryservices',
-          width: 150,
+          cellRenderer: 'ancillaryservicesRender',     
+          width: 300,
         },
         {
           headerName: 'Ancillary Actions',
@@ -57,10 +57,21 @@ class Dashboard extends Component {
         resizable: true,
       },
 
-      frameworkComponents: { iconCellRenderer: ImageComponent },
+      frameworkComponents: { iconCellRenderer: ImageComponent,ancillaryservicesRender: this.ancillaryservicesComponent },
     };
   }
-
+ ancillaryservicesComponent = (props) =>{
+   const {dashboardList} = this.props;
+   const Id = props.data.id;
+   const ancillaryServices = dashboardList.data.ancillaryServices.filter((data) => data.id === Id);
+   const filteredData = Array.prototype.map.call(ancillaryServices,seperatedData =>seperatedData.meals +", "+ seperatedData.snacks + "," +seperatedData.drinks);
+   console.log (filteredData);
+  return(
+    <div>
+      {filteredData}   
+ </div>
+  )
+}
   drop = () => {
     console.log('click');
   };
