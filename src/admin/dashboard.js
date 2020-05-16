@@ -34,7 +34,7 @@ class Dashboard extends Component {
         { headerName: 'Address', field: 'address', filter: true, width: 175 },
         {
           headerName: 'Ancillary Services',
-          cellRenderer: 'ancillaryservicesRender',     
+          cellRenderer: 'ancillaryservicesRender',
           width: 300,
         },
         {
@@ -57,45 +57,34 @@ class Dashboard extends Component {
         resizable: true,
       },
 
-      frameworkComponents: { iconCellRenderer: ImageComponent,ancillaryservicesRender: this.ancillaryservicesComponent },
+      frameworkComponents: {
+        iconCellRenderer: ImageComponent,
+        ancillaryservicesRender: this.ancillaryservicesComponent,
+      },
     };
   }
- ancillaryservicesComponent = (props) =>{
-   const {dashboardList} = this.props;
-   const Id = props.data.id;
-   const ancillaryServices = dashboardList.data.ancillaryServices.filter((data) => data.id === Id);
-   const filteredData = Array.prototype.map.call(ancillaryServices,seperatedData =>seperatedData.meals +", "+ seperatedData.snacks + "," +seperatedData.drinks);
-   console.log (filteredData);
-  return(
-    <div>
-      {filteredData}   
- </div>
-  )
-}
+  ancillaryservicesComponent = (props) => {
+    const { dashboardList } = this.props;
+    const Id = props.data.id;
+    const ancillaryServices = dashboardList.data.ancillaryServices.filter(
+      (data) => data.id === Id
+    );
+    const filteredData = Array.prototype.map.call(
+      ancillaryServices,
+      (seperatedData) =>
+        seperatedData.meals +
+        ', ' +
+        seperatedData.snacks +
+        ',' +
+        seperatedData.drinks
+    );
+    console.log(filteredData);
+    return <div>{filteredData}</div>;
+  };
   drop = () => {
     console.log('click');
   };
 
-  // fetchingRowData = () => {
-  //   let datas = this.props.dashboardList.data;
-  //   console.log(datas, '-in start of fetching routw dat');
-  //   for (let i = 0; i < datas.length; i++) {
-  //     if (typeof datas[i].ancillaryservices == 'object') {
-  //       let stringservices = '';
-  //       for (let j = 0; j < datas[i].ancillaryservices.length; j++) {
-  //         let arrayelement = Object.entries(datas[i].ancillaryservices[j]).map(
-  //           (value) => {
-  //             return value[1];
-  //           }
-  //         );
-  //         stringservices = arrayelement.toString();
-  //       }
-  //       datas[i].ancillaryservices = stringservices;
-  //     }
-  //   }
-  //   console.log(datas, ' ==========in end od fet');
-  //   return datas;
-  // };
   componentDidMount() {
     const { dasboardData } = this.props;
     dasboardData();

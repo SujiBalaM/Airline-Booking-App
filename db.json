@@ -20,8 +20,8 @@
       "id": 3,
       "first_name": "Anna",
       "last_name": "Smith",
-      "email": "annasmith23@gmail.com",
-      "password": "annasmith23",
+      "email": "smith23@gmail.com",
+      "password": "smith23",
       "role": "staff"
     },
     {
@@ -47,6 +47,80 @@
       "email": "sujathamanoharan7@gmail.com",
       "password": "Lavimohi2427",
       "role": "admin"
+    }
+  ],
+  "flightDetails": [
+    {
+      "flightNo": "A123",
+      "flightName": "Airlines",
+      "flightFrom": "Chennai",
+      "flightTo": "Bangalore",
+      "flightDeparture": "6.30.A.M",
+      "passengerList": "",
+      "checkinDetails": ""
+    },
+    {
+      "flightNo": "A124",
+      "flightName": " Chennai Airlines",
+      "flightFrom": "Bangalore",
+      "flightTo": "Chennai",
+      "flightDeparture": "8.30.A.M",
+      "passengerList": "",
+      "checkinDetails": ""
+    },
+    {
+      "flightNo": "B223",
+      "flightName": "Airjet",
+      "flightFrom": "Bangalore",
+      "flightTo": "Mumbai",
+      "flightDeparture": "6.00.P.M",
+      "passengerList": "",
+      "checkinDetails": ""
+    },
+    {
+      "flightNo": "B224",
+      "flightName": "Airjet",
+      "flightFrom": "Mumbai",
+      "flightTo": "Bangalore",
+      "flightDeparture": "8.30.P.M",
+      "passengerList": "",
+      "checkinDetails": ""
+    },
+    {
+      "flightNo": "A127",
+      "flightName": "Indian Airlines",
+      "flightFrom": "Kolkata",
+      "flightTo": "Bangalore",
+      "flightDeparture": "9.30.A.M",
+      "passengerList": "",
+      "checkinDetails": ""
+    },
+    {
+      "flightNo": "A129",
+      "flightName": "Indian Airlines",
+      "flightFrom": "Chennai",
+      "flightTo": "Bangalore",
+      "flightDeparture": "9.30.A.M",
+      "passengerList": "",
+      "checkinDetails": ""
+    },
+    {
+      "flightNo": "AB112",
+      "flightName": "KingFisher Airlines",
+      "flightFrom": "Hyderabad",
+      "flightTo": "Bangalore",
+      "flightDeparture": "6.30.P.M",
+      "passengerList": "",
+      "checkinDetails": ""
+    },
+    {
+      "flightNo": "AC113",
+      "flightName": "KingFisher Airlines",
+      "flightFrom": "Chennai",
+      "flightTo": "Hyderabad",
+      "flightDeparture": "7.30.A.M",
+      "passengerList": "",
+      "checkinDetails": ""
     }
   ],
   "rowData": [
@@ -327,9 +401,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "jsdkhfkjds",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": [
-        {}
-      ],
+      "ancillaryservices": [{}],
       "seatnumber": "r45"
     },
     {
@@ -573,9 +645,7 @@
       "DOB": "2017-05-24",
       "passportnumber": "123123",
       "address": "123",
-      "ancillaryservices": [
-        {}
-      ],
+      "ancillaryservices": [{}],
       "seatnumber": "123"
     }
   ],

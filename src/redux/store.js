@@ -5,6 +5,7 @@ import loginReducer from './login';
 import dashboardReducer from './dashboard/index';
 import passengersReducer from './passengers/index';
 import ancilleryReducer from './ancillery/index';
+import flightReducer from './flight/index';
 
 const middleWares = [thunk];
 
@@ -21,6 +22,7 @@ let rootReducer = combineReducers({
   dashboardAdminList: dashboardReducer,
   submitPassengers: passengersReducer,
   ancilleryServices: ancilleryReducer,
+  flightData: flightReducer,
 });
 
 const initialState = window.__INITIAL_STATE__;

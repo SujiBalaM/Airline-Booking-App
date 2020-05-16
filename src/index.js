@@ -10,17 +10,18 @@ import Login from './admin/login';
 import * as serviceWorker from './serviceWorker';
 import createHistory from 'history/createBrowserHistory';
 import Dashboard from './admin/dashboard';
+import FlightList from './flight/flightList';
 const history = createHistory();
 
 const userDetails = localStorage.getItem('user');
 const userInfo = JSON.parse(userDetails);
 console.log('userInfo--->', userInfo);
-// userdetails value = null login
-// userdetails value = availabel dashboard
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
+        <Route exact path='/flightList' component={FlightList} />
         <Route
           path='/login'
           render={(props) =>
@@ -31,21 +32,37 @@ ReactDOM.render(
             )
           }
         />
-        {/* {
-  loginusers.isLoginSuccess && <Route exact path = '/dashboard' component={Dashboard}/>:
-  <Redirect to={{ pathname:'/login'}}/>
-} */}
-        {/* <Route path="/login" render={props => (
-					 user && user.role === "admin" 
-						? <Login {...props} />
-						: <Redirect to={{ pathname: '/login'}} />
-				)} /> */}
+
         {
           <Route
             path='/dashboard'
             render={(props) =>
               userInfo ? (
                 <Dashboard {...props} />
+              ) : (
+                <Redirect to={{ pathname: '/login' }} />
+              )
+            }
+          />
+        }
+        {
+          <Route
+            path='/login'
+            render={(props) =>
+              !userInfo ? (
+                <Login {...props} />
+              ) : (
+                <Redirect to={{ pathname: '/flightList' }} />
+              )
+            }
+          />
+        }
+        {
+          <Route
+            path='/flightList'
+            render={(props) =>
+              userInfo && userInfo.role === 'staff' ? (
+                <FlightList {...props} />
               ) : (
                 <Redirect to={{ pathname: '/login' }} />
               )
