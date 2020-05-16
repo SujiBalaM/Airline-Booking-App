@@ -13,7 +13,7 @@ class FlightList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      flightList: this.props.flightList,
+      
       columnDefs: [
         {
           headerName: 'Flight Number',
@@ -75,14 +75,14 @@ class FlightList extends Component {
     };
   }
   componentDidMount() {
-    const { flightDetails, flightList } = this.props;
+    const { flightDetails} = this.props;
     flightDetails();
     console.log('fligh from did mount', this.props.flightList);
-    this.setState({ flightList: this.props.flightList });
   }
 
   render() {
     const { flightList } = this.props;
+    console.log('flight Data------->',flightList)
     return (
       <div>
         <Header />

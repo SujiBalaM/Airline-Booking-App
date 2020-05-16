@@ -34,7 +34,7 @@ class Header extends Component {
         <AppBar position='static'>
           <Toolbar>
             <Typography variant='h6' className={classes.title}>
-              Welcome {user[0].first_name}
+              Welcome {user && user[0].first_name}
             </Typography>
             <Button color='inherit' onClick={this.handleClick}>
               Logout

@@ -11,6 +11,7 @@ import * as serviceWorker from './serviceWorker';
 import createHistory from 'history/createBrowserHistory';
 import Dashboard from './admin/dashboard';
 import FlightList from './flight/flightList';
+import PassengerDetails from './staff/passengerDetails';
 const history = createHistory();
 
 const userDetails = localStorage.getItem('user');
@@ -21,15 +22,20 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <Route exact path='/flightList' component={FlightList} />
         <Route
           path='/login'
-          render={(props) =>
+          render={(props) => {
+            console.log("userInfo---------->", userInfo);
+            return(
             !userInfo ? (
               <Login {...props} />
             ) : (
+              userInfo[0].role === "staff" ?
+              <Redirect to={{ pathname: '/flightList' }} />
+              : 
               <Redirect to={{ pathname: '/dashboard' }} />
             )
+            )}
           }
         />
 
@@ -38,6 +44,9 @@ ReactDOM.render(
             path='/dashboard'
             render={(props) =>
               userInfo ? (
+                userInfo[0].role === 'staff' ?
+                <FlightList {...props} />
+                :
                 <Dashboard {...props} />
               ) : (
                 <Redirect to={{ pathname: '/login' }} />
@@ -47,12 +56,12 @@ ReactDOM.render(
         }
         {
           <Route
-            path='/login'
+            path='/flightList'
             render={(props) =>
-              !userInfo ? (
-                <Login {...props} />
+              userInfo ? (
+                <FlightList {...props} />
               ) : (
-                <Redirect to={{ pathname: '/flightList' }} />
+                <Redirect to={{ pathname: '/login' }} />
               )
             }
           />
@@ -69,6 +78,7 @@ ReactDOM.render(
             }
           />
         }
+        <Route path='/passengerDetails/:flightNo' component={PassengerDetails}/>
         <Route exact path='/' component={Login} />
       </Switch>
     </Router>
