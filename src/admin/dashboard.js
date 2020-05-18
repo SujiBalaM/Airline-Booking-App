@@ -20,6 +20,7 @@ class Dashboard extends Component {
       searchPassengers: [],
       alert: {},
       columnDefs: [
+        { headerName: 'Flight Number', field: 'flightNo', width: 75 },
         { headerName: 'Sl.No', field: 'id', width: 75 },
         { headerName: 'First Name', field: 'firstname', width: 100 },
         { headerName: 'Last Name', field: 'lastname', width: 100 },
@@ -65,6 +66,7 @@ class Dashboard extends Component {
   }
   ancillaryservicesComponent = (props) => {
     const { dashboardList } = this.props;
+    console.log('from dashboard', dashboardList);
     const Id = props.data.id;
     const ancillaryServices = dashboardList.data.ancillaryServices.filter(
       (data) => data.id === Id
@@ -78,7 +80,6 @@ class Dashboard extends Component {
         ',' +
         seperatedData.drinks
     );
-    console.log(filteredData);
     return <div>{filteredData}</div>;
   };
   drop = () => {
@@ -93,7 +94,6 @@ class Dashboard extends Component {
     const searchDetails = await axios.get(
       `http://localhost:5000/rowData?q=${text}`
     );
-    console.log('searchDetails---->', searchDetails);
     this.setState({ searchPassengers: searchDetails });
   };
   clearData = () => {
@@ -108,8 +108,6 @@ class Dashboard extends Component {
 
     const datas =
       searchPassengers.length == 0 ? dashboardList : searchPassengers;
-    console.log('datas------------------>', datas);
-    console.log('searchPassengers.length------------------>', datas.data);
     return (
       <div>
         <Header />
@@ -148,7 +146,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('stateasdasasd----->', state);
   return {
     dashboardList: state.dashboardAdminList,
   };

@@ -52,6 +52,7 @@ class AddPassengerDialog extends Component {
     const form = e.target;
     const data = new FormData(form);
     const formdata = {};
+    formdata.flightNo = data.get('flightNo');
     formdata.id = data.get('id');
     formdata.firstname = data.get('firstname');
     formdata.lastname = data.get('lastname');
@@ -73,9 +74,9 @@ class AddPassengerDialog extends Component {
       addedPassengers.isDataPending === true
     ) {
       if (nextProps.addedPassengers.isDataSuccess === true) {
+        this.successToast();
         this.props.actionHandleClose();
         dasboardData();
-        this.successToast();
       }
     }
   }
@@ -98,6 +99,14 @@ class AddPassengerDialog extends Component {
           <form className={classes.root} onSubmit={this.handleSubmit}>
             <TextField
               autoFocus
+              margin='dense'
+              name='flightNo'
+              label='Flight Number'
+              type='text'
+              fullWidth
+            />
+
+            <TextField
               margin='dense'
               name='id'
               label='Id'
@@ -122,9 +131,9 @@ class AddPassengerDialog extends Component {
             </TextField>
             <TextField
               name='date'
-              label='Birthday'
+              label='Date of Journey'
               type='date'
-              defaultValue='2017-05-24'
+              defaultValue='2020-05-18'
               className={classes.textField}
               InputLabelProps={{
                 shrink: true,

@@ -106,12 +106,6 @@ class Login extends Component {
         this.failureToast();
       }
     }
-
-    // if (loginusers.isLoginSuccess) {
-    // window.location.reload();
-
-    // history.push('dashboard');
-    // }
   }
 
   render() {

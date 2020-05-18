@@ -12,6 +12,7 @@ import createHistory from 'history/createBrowserHistory';
 import Dashboard from './admin/dashboard';
 import FlightList from './flight/flightList';
 import PassengerDetails from './staff/passengerDetails';
+import CheckinDetails from './staff/checkinDetails';
 const history = createHistory();
 
 const userDetails = localStorage.getItem('user');
@@ -25,18 +26,15 @@ ReactDOM.render(
         <Route
           path='/login'
           render={(props) => {
-            console.log("userInfo---------->", userInfo);
-            return(
-            !userInfo ? (
+            console.log('userInfo---------->', userInfo);
+            return !userInfo ? (
               <Login {...props} />
-            ) : (
-              userInfo[0].role === "staff" ?
+            ) : userInfo[0].role === 'staff' ? (
               <Redirect to={{ pathname: '/flightList' }} />
-              : 
+            ) : (
               <Redirect to={{ pathname: '/dashboard' }} />
-            )
-            )}
-          }
+            );
+          }}
         />
 
         {
@@ -44,10 +42,11 @@ ReactDOM.render(
             path='/dashboard'
             render={(props) =>
               userInfo ? (
-                userInfo[0].role === 'staff' ?
-                <FlightList {...props} />
-                :
-                <Dashboard {...props} />
+                userInfo[0].role === 'staff' ? (
+                  <FlightList {...props} />
+                ) : (
+                  <Dashboard {...props} />
+                )
               ) : (
                 <Redirect to={{ pathname: '/login' }} />
               )
@@ -78,7 +77,11 @@ ReactDOM.render(
             }
           />
         }
-        <Route path='/passengerDetails/:flightNo' component={PassengerDetails}/>
+        <Route
+          path='/passengerDetails/:flightNo'
+          component={PassengerDetails}
+        />
+        <Route path='/checkinDetails/:flightNo' component={CheckinDetails} />
         <Route exact path='/' component={Login} />
       </Switch>
     </Router>

@@ -5,7 +5,7 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import Footer from '../common/footer';
 import Header from '../common/header';
 import PassengerList from '../staff/passengerList';
-import CheckinDetails from '../staff/checkinDetails';
+import CheckinList from '../staff/checkinList';
 import { connect } from 'react-redux';
 import { getFlightDetails } from '../redux/flight/action';
 
@@ -13,7 +13,6 @@ class FlightList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
       columnDefs: [
         {
           headerName: 'Flight Number',
@@ -70,19 +69,19 @@ class FlightList extends Component {
 
       frameworkComponents: {
         buttonRenderer: PassengerList,
-        checkinbuttonRenderer: CheckinDetails,
+        checkinbuttonRenderer: CheckinList,
       },
     };
   }
   componentDidMount() {
-    const { flightDetails} = this.props;
+    const { flightDetails } = this.props;
     flightDetails();
     console.log('fligh from did mount', this.props.flightList);
   }
 
   render() {
     const { flightList } = this.props;
-    console.log('flight Data------->',flightList)
+    console.log('flight Data------->', flightList);
     return (
       <div>
         <Header />

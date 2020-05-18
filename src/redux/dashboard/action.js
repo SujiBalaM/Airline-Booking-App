@@ -6,20 +6,13 @@ export function dasboardData() {
       .then((data) => data.json())
       .then((response) => {
         const dasboardData = response.rowData;
-        console.log('dasboardData asd', dasboardData);
         fetch('http://localhost:5000/ancillaryServices/')
           .then((data) => data.json())
-          // data
-          //   .map((element) => {
-          //     console.log(
-          //       `${element.meal},${element.snacks},${element.drinks}`
-          //     );
-          //   })
           .then((res) => {
             dasboardData.ancillaryServices = res;
+            console.log('from dashboardAction----->', dasboardData);
             dispatch({ type: GETDASHBOARDDATA_SUCCESS, payload: dasboardData });
           });
-          
       });
   };
 }
