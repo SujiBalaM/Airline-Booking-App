@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+.seats{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  width: 60%;
+}
+.seat-icon{
+  display: table;
+  margin: 0 auto;
+}
