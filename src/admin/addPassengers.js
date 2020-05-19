@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AddPassengers() {
+function AddPassengers(props) {
+  console.log(props);
   const [open, setOpen] = React.useState(false);
   const [gender, setGender] = React.useState('Male');
 

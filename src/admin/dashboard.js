@@ -19,13 +19,15 @@ class Dashboard extends Component {
     this.state = {
       searchPassengers: [],
       alert: {},
+      selectedRowValue:[],
       columnDefs: [
         {
           headerName: 'Sl.No',
           field: 'id',
+
           width: 75,
-          checkboxSelection: true,
-        },
+
+          },
         { headerName: 'Flight Number', field: 'flightNo', width: 75 },
 
         { headerName: 'First Name', field: 'firstname', width: 100 },
@@ -56,6 +58,7 @@ class Dashboard extends Component {
           filter: true,
           width: 100,
         },
+        
       ],
       defaultColDef: {
         flex: 1,
@@ -92,9 +95,6 @@ class Dashboard extends Component {
   drop = () => {
     console.log('click');
   };
-  checkboxSelected(event) {
-    console.log(event);
-  }
 
   componentDidMount() {
     const { dasboardData } = this.props;
@@ -112,10 +112,16 @@ class Dashboard extends Component {
   setAlert = (msg, type) => {
     this.setState({ alert: { msg, type } });
   };
+  onSelectionChanged = (events) => {
+    var selectedRows = events.api.getSelectedRows();
+    console.log(selectedRows);
+    this.setState({selectedRowValue:selectedRows});
+
+  };
+
   render() {
     const { dashboardList } = this.props;
     const { searchPassengers } = this.state;
-    this.checkboxSelected();
     const datas =
       searchPassengers.length == 0 ? dashboardList : searchPassengers;
     return (
@@ -131,7 +137,7 @@ class Dashboard extends Component {
         {this.state.alert && this.state.alert.msg}
         <br />
         <span>
-          <AddPassengers />
+          <AddPassengers data={this.state.selectedRowValue} />
         </span>
         <br />
         <div
@@ -147,7 +153,9 @@ class Dashboard extends Component {
             columnDefs={this.state.columnDefs}
             frameworkComponents={this.state.frameworkComponents}
             rowData={datas.data}
-          ></AgGridReact>
+            rowSelection='single'
+            onSelectionChanged={this.onSelectionChanged.bind(this)}
+            ></AgGridReact>
         </div>
         <Footer />
       </div>

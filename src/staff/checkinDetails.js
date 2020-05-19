@@ -20,23 +20,24 @@ class CheckinDetails extends Component {
     dasboardData();
   }
 
-  getUserSeats(totalSeats, checkedInPassangers) {
+  getUserSeats(totalSeats, checkedInPassangers, ancillaryServices) {
     let i = 0;
     let seats = [];
+    console.log('ancillaryServices',ancillaryServices);
     while (i < totalSeats) {
       i++;
       let color = checkedInPassangers
         .map((n) =>
           n.seatnumber === `A${i}`
-            ? true
-            : false && n.ancillaryservices === `A${i}`
-            ? true
-            : false
+            ? n.id
+            :  false 
         )
         .filter((x) => x);
-      console.log('color', color);
+      
+       let services = ancillaryServices && ancillaryServices.map((m) => m.id === color[0] ? true : false).filter(x => x);
+       console.log('services----->', services);
       seats.push(
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center',position:'relative' }}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='40'
@@ -49,32 +50,34 @@ class CheckinDetails extends Component {
               fill={`${color.length === 0 ? 'red' : 'green'}`}
             />
           </svg>
-          <StarIcon />
+          {services && services.length !== 0 ?
+            <StarIcon className='star' /> : ""}     
           <span>{`A${i}`}</span>
         </div>
       );
     }
     return seats;
   }
-  // ancillaryservicesComponent = (props) => {
-  //   const { dashboardList } = this.props;
-  //   const Id = props.data.id;
-  //   const ancillaryServices = dashboardList.data.ancillaryServices.filter(
-  //     (data) => data.id === Id
-  //   );
-  //   const filteredData = Array.prototype.map.call(
-  //     ancillaryServices,
-  //     (seperatedData) =>
-  //       seperatedData.meals +
-  //       ', ' +
-  //       seperatedData.snacks +
-  //       ',' +
-  //       seperatedData.drinks
-  //   );
-  //   console.log('filtered Data', filteredData);
-  //   this.setState({ ancillaryServices: filteredData });
-  //   return <div>{filteredData}</div>;
-  // };
+
+  ancillaryservicesComponent = (props) => {
+    const { dashboardList } = this.props;
+    const Id = props.data.id;
+    const ancillaryServices = dashboardList.data.ancillaryServices.filter(
+      (data) => data.id === Id
+    );
+    const filteredData = Array.prototype.map.call(
+      ancillaryServices,
+      (seperatedData) =>
+        seperatedData.meals +
+        ', ' +
+        seperatedData.snacks +
+        ',' +
+        seperatedData.drinks
+    );
+    console.log('filtered Data', filteredData);
+    this.setState({ ancillaryServices: filteredData });
+    return <div>{filteredData}</div>;
+  };
 
   render() {
     const { dashboardList } = this.props;
@@ -83,8 +86,8 @@ class CheckinDetails extends Component {
     const checkinDetails = dashboardList.data.filter(
       (data) => data.flightNo === flightId
     );
-    console.log('checkinDetails------>', checkinDetails);
-
+  
+    const ancillaryServices = dashboardList.data && dashboardList.data.ancillaryServices;
     return (
       <div>
         <Header />
@@ -92,7 +95,7 @@ class CheckinDetails extends Component {
         <h4>Passenger Checked In Details</h4>
         <br />
         <div className='seats'>
-          {this.getUserSeats(this.state.points, checkinDetails)}
+          {this.getUserSeats(this.state.points, checkinDetails, ancillaryServices)}
         </div>
 
         <Footer />

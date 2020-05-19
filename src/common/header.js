@@ -22,8 +22,9 @@ const useStyles = (theme) => ({
 class Header extends Component {
   handleClick() {
     localStorage.clear('user');
-    window.location.reload();
     this.props.history.push('/');
+    window.location.reload();
+
   }
   render() {
     const { classes } = this.props;

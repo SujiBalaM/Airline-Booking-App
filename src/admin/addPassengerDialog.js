@@ -28,6 +28,7 @@ class AddPassengerDialog extends Component {
     });
 
   constructor(props) {
+    console.log('addDialog',props)
     super(props);
     this.state = {
       isOpen: false,

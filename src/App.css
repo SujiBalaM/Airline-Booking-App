@@ -45,3 +45,8 @@
   display: table;
   margin: 0 auto;
 }
+.star{
+  position: absolute;
+  top: 0;
+  right: 16px;
+}
