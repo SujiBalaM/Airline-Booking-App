@@ -11,6 +11,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 import { ToastContainer, toast } from 'react-toastify';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = (theme) => ({
   root: {
@@ -52,8 +53,8 @@ class AddPassengerDialog extends Component {
     const form = e.target;
     const data = new FormData(form);
     const formdata = {};
-    formdata.flightNo = data.get('flightNo');
     formdata.id = data.get('id');
+    formdata.flightNo = data.get('flightNo');
     formdata.firstname = data.get('firstname');
     formdata.lastname = data.get('lastname');
     formdata.gender = data.get('gender');
@@ -64,7 +65,8 @@ class AddPassengerDialog extends Component {
     formdata.seatnumber = data.get('seatnumber');
     this.props.addingPassengers(formdata);
     this.successToast();
-    // this.props.dasboardData()
+    this.props.actionHandleClose();
+    this.props.dasboardData();
   };
 
   componentWillReceiveProps(nextProps, nextState) {
@@ -100,19 +102,19 @@ class AddPassengerDialog extends Component {
             <TextField
               autoFocus
               margin='dense'
+              name='id'
+              label='Id'
+              type='number'
+              fullWidth
+            />
+            <TextField
+              margin='dense'
               name='flightNo'
               label='Flight Number'
               type='text'
               fullWidth
             />
 
-            <TextField
-              margin='dense'
-              name='id'
-              label='Id'
-              type='number'
-              fullWidth
-            />
             <TextField name='firstname' label='First Name' type='text' />
             <TextField name='lastname' label='Last Name' type='text' />
             <TextField

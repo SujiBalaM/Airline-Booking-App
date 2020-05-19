@@ -38,6 +38,17 @@ function AddPassengers() {
       >
         Add Passengers
       </Button>
+      <Button
+        color='primary'
+        variant='contained'
+        onClick={handleClickOpen}
+        style={{
+          marginRight: '10px',
+          marginLeft: '10px',
+        }}
+      >
+        Update Passengers
+      </Button>
 
       <AddPassengerDialog isOpen={open} actionHandleClose={hanldeClose} />
     </div>

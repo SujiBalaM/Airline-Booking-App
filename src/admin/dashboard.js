@@ -20,8 +20,14 @@ class Dashboard extends Component {
       searchPassengers: [],
       alert: {},
       columnDefs: [
+        {
+          headerName: 'Sl.No',
+          field: 'id',
+          width: 75,
+          checkboxSelection: true,
+        },
         { headerName: 'Flight Number', field: 'flightNo', width: 75 },
-        { headerName: 'Sl.No', field: 'id', width: 75 },
+
         { headerName: 'First Name', field: 'firstname', width: 100 },
         { headerName: 'Last Name', field: 'lastname', width: 100 },
         { headerName: 'Gender', field: 'gender', sortable: true, width: 75 },
@@ -57,6 +63,7 @@ class Dashboard extends Component {
         editable: true,
         resizable: true,
       },
+      rowSelection: 'single',
 
       frameworkComponents: {
         iconCellRenderer: ImageComponent,
@@ -85,6 +92,9 @@ class Dashboard extends Component {
   drop = () => {
     console.log('click');
   };
+  checkboxSelected(event) {
+    console.log(event);
+  }
 
   componentDidMount() {
     const { dasboardData } = this.props;
@@ -105,7 +115,7 @@ class Dashboard extends Component {
   render() {
     const { dashboardList } = this.props;
     const { searchPassengers } = this.state;
-
+    this.checkboxSelected();
     const datas =
       searchPassengers.length == 0 ? dashboardList : searchPassengers;
     return (
