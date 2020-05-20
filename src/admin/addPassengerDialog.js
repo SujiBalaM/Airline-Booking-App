@@ -194,6 +194,7 @@ class AddPassengerDialog extends Component {
             />
             <TextField
               margin='dense'
+              name = 'flightNo'
               label='Flight Number'
               type='text'
               fullWidth
