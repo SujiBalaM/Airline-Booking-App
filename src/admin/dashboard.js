@@ -19,15 +19,14 @@ class Dashboard extends Component {
     this.state = {
       searchPassengers: [],
       alert: {},
-      selectedRowValue:[],
+      selectedRowValue: [],
       columnDefs: [
         {
           headerName: 'Sl.No',
           field: 'id',
 
           width: 75,
-
-          },
+        },
         { headerName: 'Flight Number', field: 'flightNo', width: 75 },
 
         { headerName: 'First Name', field: 'firstname', width: 100 },
@@ -58,7 +57,6 @@ class Dashboard extends Component {
           filter: true,
           width: 100,
         },
-        
       ],
       defaultColDef: {
         flex: 1,
@@ -76,7 +74,6 @@ class Dashboard extends Component {
   }
   ancillaryservicesComponent = (props) => {
     const { dashboardList } = this.props;
-    console.log('from dashboard', dashboardList);
     const Id = props.data.id;
     const ancillaryServices = dashboardList.data.ancillaryServices.filter(
       (data) => data.id === Id
@@ -115,8 +112,7 @@ class Dashboard extends Component {
   onSelectionChanged = (events) => {
     var selectedRows = events.api.getSelectedRows();
     console.log(selectedRows);
-    this.setState({selectedRowValue:selectedRows});
-
+    this.setState({ selectedRowValue: selectedRows });
   };
 
   render() {
@@ -137,7 +133,7 @@ class Dashboard extends Component {
         {this.state.alert && this.state.alert.msg}
         <br />
         <span>
-          <AddPassengers data={this.state.selectedRowValue} />
+          <AddPassengers selectedRowData={this.state.selectedRowValue} />
         </span>
         <br />
         <div
@@ -155,7 +151,7 @@ class Dashboard extends Component {
             rowData={datas.data}
             rowSelection='single'
             onSelectionChanged={this.onSelectionChanged.bind(this)}
-            ></AgGridReact>
+          ></AgGridReact>
         </div>
         <Footer />
       </div>

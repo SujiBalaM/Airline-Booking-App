@@ -126,41 +126,39 @@
   "rowData": [
     {
       "id": 1,
-      "firstname": "Sujatha",
-      "lastname": "Mano",
-      "gender": "F",
-      "DOB": "07/06/85",
-      "passportnumber": "AC123",
-      "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": [
-        {
-          "snacks": "Coke",
-          "meal": "Coke"
-        }
-      ],
-      "seatnumber": "F1"
+      "flightNo": "A124",
+      "firstname": "Sindhu",
+      "lastname": "Raj",
+      "gender": "Female",
+      "DOB": "2020-05-21",
+      "passportnumber": "A12345",
+      "address": "Bangalore",
+      "ancillaryservices": "",
+      "seatnumber": "A3"
     },
     {
       "id": 2,
-      "firstname": "Bala",
-      "lastname": "Murugesh",
-      "gender": "M",
-      "DOB": "07/06/82",
-      "passportnumber": "AC143",
-      "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": [],
-      "seatnumber": "F2"
+      "flightNo": "A124",
+      "firstname": "Raj",
+      "lastname": "Kumar",
+      "gender": "Male",
+      "DOB": "2020-05-21",
+      "passportnumber": "@3456",
+      "address": "Bangalore",
+      "ancillaryservices": "",
+      "seatnumber": "A7"
     },
     {
       "id": 3,
-      "firstname": "Lavith",
-      "lastname": "Bala",
-      "gender": "M",
-      "DOB": "24/10/10",
-      "passportnumber": "AC113",
-      "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": [],
-      "seatnumber": "F3"
+      "flightNo": "A124",
+      "firstname": "SujiBala",
+      "lastname": "Mano",
+      "gender": "Female",
+      "DOB": "2020-05-21",
+      "passportnumber": "SB2345",
+      "address": "Bangalore",
+      "ancillaryservices": "",
+      "seatnumber": "A9"
     },
     {
       "id": 4,
@@ -807,6 +805,30 @@
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
       "ancillaryservices": "",
       "seatnumber": "A34"
+    },
+    {
+      "id": "14",
+      "flightNo": "A124",
+      "firstname": "Bala",
+      "lastname": "M",
+      "gender": "Male",
+      "DOB": "2020-05-21",
+      "passportnumber": "K12345",
+      "address": "Bangalore",
+      "ancillaryservices": "",
+      "seatnumber": "A47"
+    },
+    {
+      "id": "13",
+      "flightNo": "A124",
+      "firstname": "Suji",
+      "lastname": "Bala",
+      "gender": "Female",
+      "DOB": "2020-05-21",
+      "passportnumber": "F2345",
+      "address": "Bangalore",
+      "ancillaryservices": "",
+      "seatnumber": "A19"
     }
   ],
   "ancillaryservices": [
@@ -917,6 +939,12 @@
       "snacks": "Fried Cashew",
       "meals": "Non-veg meal",
       "drinks": "Sweet-Lime Juice"
+    },
+    {
+      "id": "14",
+      "snacks": "Fried Cashew",
+      "meals": "Veg meal special",
+      "drinks": "Apple Juice"
     }
   ]
 }

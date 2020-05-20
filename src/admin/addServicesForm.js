@@ -52,12 +52,12 @@ class AddServicesForm extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    const {asData} = this.props;
+    const { asData } = this.props;
     const form = event.target;
     const data = new FormData(form);
     const formdata = {};
-    console.log("handleSubmit---------------->", asData);
-    if(asData.length === 0){
+    console.log('handleSubmit---------------->', asData);
+    if (asData.length === 0) {
       formdata.id = this.props.data.id;
       formdata.snacks = data.get('snacks');
       formdata.meals = data.get('meals');
@@ -71,25 +71,20 @@ class AddServicesForm extends Component {
       formdata.drinks = this.state.drinks;
       this.props.updatingServices(formdata);
     }
-
-
-       this.props.dasboardData();
-    
-    
+    this.props.dasboardData();
   };
   handleUpdate = (event) => {
     const formdata = {};
-      formdata.id = this.props.data.id;
-      formdata.snacks = this.state.snacks;
-      formdata.meals = this.state.meals;
-      formdata.drinks = this.state.drinks;
-      this.props.updatingServices(formdata);
-      console.log("handleUpdate---------------->", formdata);
-     // this.props.dasboardData();
-
+    formdata.id = this.props.data.id;
+    formdata.snacks = this.state.snacks;
+    formdata.meals = this.state.meals;
+    formdata.drinks = this.state.drinks;
+    this.props.updatingServices(formdata);
+    console.log('handleUpdate---------------->', formdata);
+    // this.props.dasboardData();
   };
 
-   render() {
+  render() {
     const { classes, currentmode } = this.props;
 
     const meal = [
@@ -173,24 +168,20 @@ class AddServicesForm extends Component {
               <Button onClick={this.handleClose} name='cancel' color='primary'>
                 Cancel
               </Button>
-              {currentmode == 'add'? 
+              {currentmode == 'add' ? (
                 <Button
                   type='submit'
                   name='submit'
                   color='primary'
-                //onClick={this.handleSubmit}
+                  //onClick={this.handleSubmit}
                 >
                   Add
-                </Button>:
-                <Button
-                  type='submit'
-                  name='update'
-                  color='primary'
-                >
+                </Button>
+              ) : (
+                <Button type='submit' name='update' color='primary'>
                   Update
                 </Button>
-  }
-              
+              )}
             </DialogActions>
           </form>
         </Dialog>
@@ -208,7 +199,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addingServices: (formdata) => dispatch(addAncillery(formdata)),
     updatingServices: (id) => dispatch(updateAncillery(id)),
-    dasboardData: () => dispatch(dasboardData())
+    dasboardData: () => dispatch(dasboardData()),
   };
 };
 export default withStyles(useStyles)(

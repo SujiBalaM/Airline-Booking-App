@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addPassengers } from '../redux/passengers/action';
+import { addPassengers, updatePassengers } from '../redux/passengers/action';
 import { dasboardData } from '../redux/dashboard/action';
 import { Button, MenuItem } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
@@ -28,11 +28,56 @@ class AddPassengerDialog extends Component {
     });
 
   constructor(props) {
-    console.log('addDialog',props)
+    console.log('addDialog', props);
     super(props);
     this.state = {
       isOpen: false,
       genderValue: '',
+      flightNo: props.passengerData
+        ? props.passengerData.flightNo
+          ? props.passengerData.flightNo
+          : ''
+        : '',
+      firstname: props.passengerData
+        ? props.passengerData.firstname
+          ? props.passengerData.firstname
+          : ''
+        : '',
+      lastname: props.passengerData
+        ? props.passengerData.lastname
+          ? props.passengerData.lastname
+          : ''
+        : '',
+      gender: props.passengerData
+        ? props.passengerData.gender
+          ? props.passengerData.gender
+          : ''
+        : '',
+      DOB: props.passengerData
+        ? props.passengerData.date
+          ? props.passengerData.date
+          : ''
+        : '',
+      passportnumber: props.passengerData
+        ? props.passengerData.passport
+          ? props.passengerData.passport
+          : ''
+        : '',
+      address: props.passengerData
+        ? props.passengerData.address
+          ? props.passengerData.address
+          : ''
+        : '',
+      ancillaryservices: props.passengerData
+        ? props.passengerData.ancillary
+          ? props.passengerData.ancillary
+          : ''
+        : '',
+      seatnumber: props.passengerData
+        ? props.passengerData.seatnumber
+          ? props.passengerData.seatnumber
+          : ''
+        : '',
     };
   }
 
@@ -49,24 +94,60 @@ class AddPassengerDialog extends Component {
     this.setState({ genderValue: event.target.value });
   };
 
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const data = new FormData(form);
+  //   const formdata = {};
+  //   formdata.id = data.get('id');
+  //   formdata.flightNo = data.get('flightNo');
+  //   formdata.firstname = data.get('firstname');
+  //   formdata.lastname = data.get('lastname');
+  //   formdata.gender = data.get('gender');
+  //   formdata.DOB = data.get('date');
+  //   formdata.passportnumber = data.get('passport');
+  //   formdata.address = data.get('address');
+  //   formdata.ancillaryservices = data.get('ancillary');
+  //   formdata.seatnumber = data.get('seatnumber');
+  //   this.props.addingPassengers(formdata);
+  //   this.successToast();
+  //   this.props.actionHandleClose();
+  //   this.props.dasboardData();
+  // };
   handleSubmit = (e) => {
     e.preventDefault();
+    const { passengerData } = this.props;
     const form = e.target;
     const data = new FormData(form);
     const formdata = {};
-    formdata.id = data.get('id');
-    formdata.flightNo = data.get('flightNo');
-    formdata.firstname = data.get('firstname');
-    formdata.lastname = data.get('lastname');
-    formdata.gender = data.get('gender');
-    formdata.DOB = data.get('date');
-    formdata.passportnumber = data.get('passport');
-    formdata.address = data.get('address');
-    formdata.ancillaryservices = data.get('ancillary');
-    formdata.seatnumber = data.get('seatnumber');
-    this.props.addingPassengers(formdata);
-    this.successToast();
-    this.props.actionHandleClose();
+    console.log('passengerData------->', passengerData);
+    if (passengerData.length === 0) {
+      formdata.id = data.get('id');
+      formdata.flightNo = data.get('flightNo');
+      formdata.firstname = data.get('firstname');
+      formdata.lastname = data.get('lastname');
+      formdata.gender = data.get('gender');
+      formdata.DOB = data.get('date');
+      formdata.passportnumber = data.get('passport');
+      formdata.address = data.get('address');
+      formdata.ancillaryservices = data.get('ancillary');
+      formdata.seatnumber = data.get('seatnumber');
+      this.props.addingPassengers(formdata);
+      this.props.actionHandleClose();
+    } else {
+      formdata.id = this.props.data.id;
+      formdata.flightNo = this.state.flightNo;
+      formdata.firstname = this.state.firstname;
+      formdata.lastname = this.state.lastname;
+      formdata.gender = this.state.gender;
+      formdata.DOB = this.state.date;
+      formdata.passportnumber = this.state.passport;
+      formdata.address = this.state.address;
+      formdata.ancillaryservices = this.state.ancillary;
+      formdata.seatnumber = this.state.seatnumber;
+      this.props.editingPassenger(formdata);
+      this.props.actionHandleClose();
+    }
     this.props.dasboardData();
   };
 
@@ -85,7 +166,10 @@ class AddPassengerDialog extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, passengerData, currentmode } = this.props;
+    console.log('passengerData', passengerData);
+    console.log('currentmode', currentmode);
+
     const gender = [
       {
         Gender: 'Male',
@@ -110,7 +194,6 @@ class AddPassengerDialog extends Component {
             />
             <TextField
               margin='dense'
-              name='flightNo'
               label='Flight Number'
               type='text'
               fullWidth
@@ -136,7 +219,7 @@ class AddPassengerDialog extends Component {
               name='date'
               label='Date of Journey'
               type='date'
-              defaultValue='2020-05-18'
+              // defaultValue='2020-05-18'
               className={classes.textField}
               InputLabelProps={{
                 shrink: true,
@@ -154,9 +237,16 @@ class AddPassengerDialog extends Component {
               <Button onClick={this.handleClose} name='cancel' color='primary'>
                 Cancel
               </Button>
-              <Button type='submit' name='submit' color='primary'>
-                Submit
-              </Button>
+              {currentmode == 'add' ? (
+                <Button type='submit' name='submit' color='primary'>
+                  Add
+                </Button>
+              ) : (
+                <Button type='submit' name='update' color='primary'>
+                  Update
+                </Button>
+              )}
+
               <ToastContainer autoClose={15000} />
             </DialogActions>
           </form>
@@ -174,6 +264,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addingPassengers: (formdata) => dispatch(addPassengers(formdata)),
+    editingPassenger: (id) => dispatch(updatePassengers(id)),
     dasboardData: () => dispatch(dasboardData()),
   };
 };
