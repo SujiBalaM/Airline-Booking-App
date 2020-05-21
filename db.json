@@ -139,13 +139,10 @@
     {
       "id": 2,
       "flightNo": "A124",
-      "firstname": "Raj",
+      "firstname": "Raj Kumar",
       "lastname": "Kumar",
       "gender": "Male",
-      "DOB": "2020-05-21",
-      "passportnumber": "@3456",
       "address": "Bangalore",
-      "ancillaryservices": "",
       "seatnumber": "A7"
     },
     {
@@ -162,102 +159,91 @@
     },
     {
       "id": 4,
+      "flightNo": "A123",
       "firstname": "Mohit",
       "lastname": "Bala",
       "gender": "M",
-      "DOB": "27/08/14",
-      "passportnumber": "AC133",
       "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": [],
-      "seatnumber": "F4"
+      "seatnumber": "A4"
     },
     {
       "id": 5,
+      "flightNo": "B223",
       "firstname": "Sridhar",
       "lastname": "Mano",
-      "gender": "M",
-      "DOB": "16/06/98",
-      "passportnumber": "AC193",
+      "gender": "Male",
+      "DOB": "2020-05-22",
+      "passportnumber": "A123456789",
       "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": [],
-      "seatnumber": "F5"
+      "seatnumber": "A5"
     },
     {
       "id": 6,
+      "flightNo": "B223",
       "firstname": "Durga",
       "lastname": "Prasad",
-      "gender": "M",
-      "DOB": "30/08/94",
-      "passportnumber": "AC183",
+      "gender": "Male",
       "address": "#48,s1,kubera flats,chennai",
-      "ancillaryservices": [],
-      "seatnumber": "F6"
+      "seatnumber": "A6"
     },
     {
       "id": "121",
+      "flightNo": "B223",
       "firstname": "Mano",
       "lastname": "Mano",
       "gender": "Male",
-      "DOB": "2017-05-24",
-      "passportnumber": "Q123",
-      "address": "kjshdjkhfkj",
-      "ancillaryservices": [],
+      "address": "Mumbai",
       "seatnumber": "A34"
     },
     {
       "id": "45",
+      "flightNo": "B223",
       "firstname": "Sri",
       "lastname": "Lavi",
       "gender": "Male",
-      "DOB": "2017-05-24",
-      "passportnumber": "sjncdjsfkjs",
       "address": "jsadhkjshdkj",
-      "ancillaryservices": [],
-      "seatnumber": "89"
+      "ancillaryservices": "Req snacks",
+      "seatnumber": "A69"
     },
     {
       "id": "34",
-      "firstname": "b nbnmb",
-      "lastname": "nbnmbm,n",
+      "flightNo": "B223",
+      "firstname": "Vimala",
+      "lastname": "Anja",
       "gender": "Below 10 yrs",
-      "DOB": "2017-05-24",
-      "passportnumber": "A123456789",
-      "address": "hjjkjl;",
-      "ancillaryservices": [],
-      "seatnumber": "89"
+      "DOB": "2020-05-23",
+      "address": "Mumbai",
+      "seatnumber": "A65"
     },
     {
       "id": "47",
+      "flightNo": "B223",
       "firstname": "Durga",
       "lastname": "G",
       "gender": "Below 10 yrs",
-      "DOB": "2017-05-24",
-      "passportnumber": "Asdjjkk",
+      "DOB": "2020-05-23",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": [],
-      "seatnumber": "dfsmdsf"
+      "seatnumber": "A17"
     },
     {
       "id": "556",
+      "flightNo": "B223",
       "firstname": "Durga",
       "lastname": "G",
       "gender": "Female",
-      "DOB": "2017-05-24",
-      "passportnumber": "Q123",
+      "DOB": "2020-05-23",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": [],
-      "seatnumber": "dfsmdsf"
+      "seatnumber": "A41"
     },
     {
       "id": "5586",
+      "flightNo": "A124",
       "firstname": "Durga",
       "lastname": "G",
       "gender": "Female",
-      "DOB": "2017-05-24",
-      "passportnumber": "Q123",
+      "DOB": "2020-05-29",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": [],
-      "seatnumber": "dfsmdsf"
+      "seatnumber": "A1"
     },
     {
       "id": "890",
@@ -316,14 +302,13 @@
     },
     {
       "id": "67",
-      "firstname": "vcvbvnbm",
-      "lastname": "nm,.",
+      "flightNo": "A124",
+      "firstname": "Anjali",
+      "lastname": "Ravi",
       "gender": "Below 10 yrs",
-      "DOB": "2017-05-24",
-      "passportnumber": "nm,./;",
-      "address": "",
-      "ancillaryservices": [],
-      "seatnumber": ""
+      "DOB": "2020-05-22",
+      "address": "Kolar",
+      "seatnumber": "A57"
     },
     {
       "id": "457",
@@ -832,14 +817,11 @@
     },
     {
       "id": "9",
-      "flightNo": null,
+      "flightNo": "B223",
       "firstname": "Lavith",
       "lastname": "Sujatha",
       "gender": "Male",
-      "DOB": "2020-05-21",
-      "passportnumber": "B12345",
       "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
-      "ancillaryservices": "",
       "seatnumber": "A34"
     },
     {
@@ -865,6 +847,78 @@
       "address": "Bangalore",
       "ancillaryservices": "",
       "seatnumber": "A27"
+    },
+    {
+      "id": "70",
+      "flightNo": "A124",
+      "firstname": "Ansar",
+      "lastname": "Ali",
+      "gender": "",
+      "DOB": "2020-05-23",
+      "passportnumber": "",
+      "address": "",
+      "ancillaryservices": "",
+      "seatnumber": ""
+    },
+    {
+      "id": "49",
+      "flightNo": "A123",
+      "firstname": "Bavani",
+      "lastname": "Basavaraj",
+      "gender": "Female",
+      "DOB": "2020-05-22",
+      "passportnumber": "",
+      "address": "Bangalore",
+      "ancillaryservices": "",
+      "seatnumber": "A1"
+    },
+    {
+      "id": "7",
+      "flightNo": "A124",
+      "firstname": "Durga",
+      "lastname": "G",
+      "gender": "Male",
+      "DOB": "2020-05-18",
+      "passportnumber": "",
+      "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
+      "ancillaryservices": "",
+      "seatnumber": "A39"
+    },
+    {
+      "id": "100011",
+      "flightNo": "A124",
+      "firstname": "Durga",
+      "lastname": "G",
+      "gender": "Female",
+      "DOB": "2020-05-18",
+      "passportnumber": "",
+      "address": "Louis philippe showroom, 2nd floor, Kattupakkam",
+      "ancillaryservices": "",
+      "seatnumber": "A33"
+    },
+    {
+      "id": "100012",
+      "flightNo": "A123",
+      "firstname": "Vimala",
+      "lastname": "G",
+      "gender": "Female",
+      "DOB": "2020-05-22",
+      "passportnumber": "",
+      "address": "Bangalore",
+      "ancillaryservices": "",
+      "seatnumber": "A29"
+    },
+    {
+      "id": "10013",
+      "flightNo": "A124",
+      "firstname": "Chandu",
+      "lastname": "G",
+      "gender": "Male",
+      "DOB": "2020-05-23",
+      "passportnumber": "",
+      "address": "Chennai",
+      "ancillaryservices": "",
+      "seatnumber": "A44"
     }
   ],
   "ancillaryservices": [

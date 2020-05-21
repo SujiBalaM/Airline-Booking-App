@@ -10,7 +10,7 @@ const Search = ({ searchPassengers, clearPassengers, showClear, setAlert }) => {
       setAlert('Please Enter Something', 'light');
     } else {
       searchPassengers(text);
-      // setText('');
+       setText('');
     }
   };
   const onChange = (e) => setText(e.target.value);

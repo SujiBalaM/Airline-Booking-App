@@ -94,26 +94,7 @@ class AddPassengerDialog extends Component {
     this.setState({ genderValue: event.target.value });
   };
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const data = new FormData(form);
-  //   const formdata = {};
-  //   formdata.id = data.get('id');
-  //   formdata.flightNo = data.get('flightNo');
-  //   formdata.firstname = data.get('firstname');
-  //   formdata.lastname = data.get('lastname');
-  //   formdata.gender = data.get('gender');
-  //   formdata.DOB = data.get('date');
-  //   formdata.passportnumber = data.get('passport');
-  //   formdata.address = data.get('address');
-  //   formdata.ancillaryservices = data.get('ancillary');
-  //   formdata.seatnumber = data.get('seatnumber');
-  //   this.props.addingPassengers(formdata);
-  //   this.successToast();
-  //   this.props.actionHandleClose();
-  //   this.props.dasboardData();
-  // };
+  
   handleSubmit = (e) => {
     e.preventDefault();
     const { passengerData } = this.props;
@@ -133,9 +114,11 @@ class AddPassengerDialog extends Component {
       formdata.ancillaryservices = data.get('ancillary');
       formdata.seatnumber = data.get('seatnumber');
       this.props.addingPassengers(formdata);
-      this.props.actionHandleClose();
+      // this.props.actionHandleClose();
+      // this.props.dasboardData();
+
     } else {
-      formdata.id = this.props.data.id;
+      formdata.id = this.props.passengerData.id;
       formdata.flightNo = this.state.flightNo;
       formdata.firstname = this.state.firstname;
       formdata.lastname = this.state.lastname;
@@ -146,18 +129,23 @@ class AddPassengerDialog extends Component {
       formdata.ancillaryservices = this.state.ancillary;
       formdata.seatnumber = this.state.seatnumber;
       this.props.editingPassenger(formdata);
-      this.props.actionHandleClose();
+      // this.props.actionHandleClose();
     }
-    this.props.dasboardData();
+      };
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   componentWillReceiveProps(nextProps, nextState) {
     const { addedPassengers, dasboardData } = this.props;
+    console.log('nextProps', nextProps.addedPassengers.isDataPending)
+    console.log('this props', addedPassengers.isDataPending)
     if (
-      nextProps.addedPassengers.isDataPending === false &&
-      addedPassengers.isDataPending === true
+      (nextProps.addedPassengers.isDataPending === false &&
+      addedPassengers.isDataPending === true) ||(nextProps.addedPassengers.isEditPending === false && addedPassengers.isEditPending === true)
     ) {
-      if (nextProps.addedPassengers.isDataSuccess === true) {
+      if (nextProps.addedPassengers.isDataSuccess === true || nextProps.addedPassengers.isEditSuccess === true) {
+        console.log('nextProps', nextProps.addedPassengers)
         this.successToast();
         this.props.actionHandleClose();
         dasboardData();
@@ -188,6 +176,7 @@ class AddPassengerDialog extends Component {
               autoFocus
               margin='dense'
               name='id'
+              value={this.state.id}
               label='Id'
               type='number'
               fullWidth
@@ -197,16 +186,18 @@ class AddPassengerDialog extends Component {
               name = 'flightNo'
               label='Flight Number'
               type='text'
+              value={this.state.flightNo}
+              onChange={this.handleChange}
               fullWidth
             />
 
-            <TextField name='firstname' label='First Name' type='text' />
-            <TextField name='lastname' label='Last Name' type='text' />
+            <TextField name='firstname' label='First Name' type='text' value={this.state.firstname} onChange={this.handleChange} />
+            <TextField name='lastname' label='Last Name' type='text' value={this.state.lastname} onChange={this.handleChange}/>
             <TextField
               name='gender'
               select
               label='Select'
-              value={this.state.genderValue}
+              value={this.state.gender}
               onChange={this.handleChange}
               helperText='Please select your gender'
             >
@@ -220,20 +211,24 @@ class AddPassengerDialog extends Component {
               name='date'
               label='Date of Journey'
               type='date'
-              // defaultValue='2020-05-18'
+              defaultValue='2020-05-18'
               className={classes.textField}
+              onChange={this.handleChange}
               InputLabelProps={{
                 shrink: true,
               }}
             />
-            <TextField name='passport' label='Passport Number' type='text' />
-            <TextField name='address' label='Address' type='text' />
+            <TextField name='passport' label='Passport Number' type='text'
+             value={this.state.passportnumber} onChange={this.handleChange} />
+            <TextField name='address' label='Address' type='text' value={this.state.address} onChange={this.handleChange} />
             <TextField
               name='ancillary'
               label='Ancillary Services'
               type='text'
+              value={this.state.ancillaryservices}
+              onChange={this.handleChange}
             />
-            <TextField name='seatnumber' label='Seat Number' type='text' />
+            <TextField name='seatnumber' label='Seat Number' type='text' value={this.state.seatnumber} onChange={this.handleChange}/>
             <DialogActions>
               <Button onClick={this.handleClose} name='cancel' color='primary'>
                 Cancel
@@ -242,11 +237,13 @@ class AddPassengerDialog extends Component {
                 <Button type='submit' name='submit' color='primary'>
                   Add
                 </Button>
-              ) : (
+
+              )   
+              : (
                 <Button type='submit' name='update' color='primary'>
                   Update
-                </Button>
-              )}
+                </Button>)
+              }
 
               <ToastContainer autoClose={15000} />
             </DialogActions>
