@@ -1,0 +1,10 @@
+{
+   "verbose": true,
+    "transform": {
+      "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**"
+    ]
+ }

@@ -53,9 +53,7 @@ class CheckinDetails extends Component {
               fill={`${color.length === 0 ? 'red' : 'green'}`}
             />
           </svg>
-          {/* <AirlineSeatReclineNormalIcon
-            fill={`${color.length === 0 ? 'red' : 'green'}`}
-          /> */}
+          
           {services && services.length !== 0 ? (
             <StarIcon className='star' />
           ) : (

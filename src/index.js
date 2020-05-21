@@ -5,7 +5,6 @@ import { Switch, Route } from 'react-router';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import './index.css';
-import App from './App';
 import Login from './admin/login';
 import * as serviceWorker from './serviceWorker';
 import createHistory from 'history/createBrowserHistory';
@@ -17,7 +16,9 @@ const history = createHistory();
 
 const userDetails = localStorage.getItem('user');
 const userInfo = JSON.parse(userDetails);
-console.log('userInfo--->', userInfo);
+const googleUserDetails = localStorage.getItem('userInfo');
+const googleUser = JSON.parse(googleUserDetails);
+console.log('userInfo--->', googleUser);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -27,9 +28,9 @@ ReactDOM.render(
           path='/login'
           render={(props) => {
             console.log('userInfo---------->', userInfo);
-            return !userInfo ? (
+            return !userInfo && !googleUser ? (
               <Login {...props} />
-            ) : userInfo[0].role === 'staff' ? (
+            ) : googleUser ? (
               <Redirect to={{ pathname: '/flightList' }} />
             ) : (
               <Redirect to={{ pathname: '/dashboard' }} />
@@ -41,8 +42,8 @@ ReactDOM.render(
           <Route
             path='/dashboard'
             render={(props) =>
-              userInfo ? (
-                userInfo[0].role === 'staff' ? (
+              googleUser || userInfo ? (
+                googleUser ? (
                   <FlightList {...props} />
                 ) : (
                   <Dashboard {...props} />
@@ -57,7 +58,7 @@ ReactDOM.render(
           <Route
             path='/flightList'
             render={(props) =>
-              userInfo ? (
+              googleUser ? (
                 <FlightList {...props} />
               ) : (
                 <Redirect to={{ pathname: '/login' }} />
@@ -65,7 +66,7 @@ ReactDOM.render(
             }
           />
         }
-        {
+        {/* {
           <Route
             path='/flightList'
             render={(props) =>
@@ -76,13 +77,35 @@ ReactDOM.render(
               )
             }
           />
-        }
+        } */}
         <Route
           path='/passengerDetails/:flightNo'
-          component={PassengerDetails}
+          render={(props) => {
+            return !userInfo && !googleUser ? (
+              <Redirect to={{ pathname: '/login' }} />
+            ) : (
+              <PassengerDetails {...props} />
+            );
+          }}
         />
-        <Route path='/checkinDetails/:flightNo' component={CheckinDetails} />
-        <Route exact path='/' component={Login} />
+        <Route path='/checkinDetails/:flightNo' 
+        render={(props) => {
+          return !userInfo && !googleUser ? (
+            <Redirect to={{ pathname: '/login' }} />
+          ) : (
+            <CheckinDetails {...props} />
+          );
+        }}
+        />
+        <Route exact path='/' render={(props) => {
+            return !userInfo && !googleUser ? (
+              <Login {...props} />
+            ) : googleUser ? (
+              <Redirect to={{ pathname: '/flightList' }} />
+            ) : (
+              <Redirect to={{ pathname: '/dashboard' }} />
+            );
+          }} />
       </Switch>
     </Router>
   </Provider>,

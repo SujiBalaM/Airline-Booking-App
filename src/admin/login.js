@@ -115,10 +115,12 @@ class Login extends Component {
 
   responseGoogle = (response) => {
     console.log('response', response);
-    localStorage.setItem('userData', JSON.stringify(response));
-    this.props.history.push('dashboard');
+    localStorage.setItem('userInfo', JSON.stringify(response));
+    this.props.history.push('flightList');
+    window.location.reload();
     var res = response.profileObj;
-    console.log(res);
+    console.log('data from google',res);
+    console.log('',this.props)
   };
 
   render() {

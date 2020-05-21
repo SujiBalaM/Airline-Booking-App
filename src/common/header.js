@@ -6,7 +6,10 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
 const userDetails = localStorage.getItem('user');
-const user = JSON.parse(userDetails);
+const userDetail = JSON.parse(userDetails);
+const googleUserDetails = localStorage.getItem('userInfo');
+const googleUser = JSON.parse(googleUserDetails);
+const user = (googleUser && googleUser.profileObj) || (userDetail && userDetail[0]);
 const useStyles = (theme) => ({
   root: {
     flexGrow: 1,
@@ -20,9 +23,11 @@ const useStyles = (theme) => ({
 });
 
 class Header extends Component {
-  handleClick() {
+  constructor(props){
+    super(props);
+  }
+  handleClick = () => {
     localStorage.clear('user');
-    this.props.history.push('/');
     window.location.reload();
 
   }
@@ -35,7 +40,7 @@ class Header extends Component {
         <AppBar position='static'>
           <Toolbar>
             <Typography variant='h6' className={classes.title}>
-              Welcome {user && user[0].first_name}
+              Welcome {user && user.name}
             </Typography>
             <Button color='inherit' onClick={this.handleClick}>
               Logout
