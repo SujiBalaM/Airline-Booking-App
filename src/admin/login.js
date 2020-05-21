@@ -19,6 +19,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Paper from '@material-ui/core/Paper';
 
+import axios from 'axios';
+
+import { GoogleLogin } from 'react-google-login';
 const useStyles = (theme) => ({
   root: {
     height: '100vh',
@@ -74,6 +77,8 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      userDetails: {},
+      isUserLoggedIn: false,
     };
   }
 
@@ -108,9 +113,18 @@ class Login extends Component {
     }
   }
 
+  responseGoogle = (response) => {
+    console.log('response', response);
+    localStorage.setItem('userData', JSON.stringify(response));
+    this.props.history.push('dashboard');
+    var res = response.profileObj;
+    console.log(res);
+  };
+
   render() {
     const { classes } = this.props;
     const { loginusers } = this.props;
+
     return (
       // <div>
       //   <Container component='main' maxWidth='xs'>
@@ -121,7 +135,6 @@ class Login extends Component {
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
             <Avatar className={classes.avatar}></Avatar>
-
             <Typography component='h1' variant='h5'>
               Sign in
             </Typography>
@@ -181,6 +194,14 @@ class Login extends Component {
                 </Grid>
               </Grid>
             </form>
+            <br />
+            <GoogleLogin
+              clientId='120424036583-06mdmkqoodlafd132jeqegd1in947orn.apps.googleusercontent.com'
+              buttonText='Sign in with Google'
+              onSuccess={this.responseGoogle}
+              onFailure={this.responseGoogle}
+            />
+            ,
           </div>
         </Grid>
       </Grid>

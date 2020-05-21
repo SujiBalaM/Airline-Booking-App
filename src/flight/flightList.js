@@ -90,9 +90,9 @@ class FlightList extends Component {
           className='ag-theme-balham'
           style={{
             height: '400px',
-            width: '99%',
-            marginLeft: '15px',
-            marginRight: '15px',
+            width: '100%',
+            padding: '0 15px',
+            boxSizing: 'border-box',
           }}
         >
           <AgGridReact

@@ -36,16 +36,16 @@
     transform: rotate(360deg);
   }
 }
-.seats{
+.seats {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto;
   width: 60%;
 }
-.seat-icon{
+.seat-icon {
   display: table;
   margin: 0 auto;
 }
-.star{
+.star {
   position: absolute;
   top: 0;
   right: 16px;

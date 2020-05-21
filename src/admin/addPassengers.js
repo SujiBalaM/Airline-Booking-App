@@ -26,14 +26,14 @@ class AddPassengers extends Component {
   }
   handleClickOpen = (args) => {
     const { selectedRowData } = this.props;
-    console.log('selectedRowData',selectedRowData)
+    console.log('selectedRowData', selectedRowData);
     if (args === 'add') {
       this.setState({ isOpen: true, mode: 'add' });
     } else {
       const data = this.props.dashboardList.filter(
         (response, { key: id }) => response.id === selectedRowData[0].id
       );
-      console.log('data',data)
+      console.log('data', data);
       this.setState({ isOpen: true, asAddData: data[0], mode: 'edit' });
     }
   };
@@ -68,6 +68,7 @@ class AddPassengers extends Component {
           style={{
             marginRight: '10px',
             marginLeft: '10px',
+            fontSize: '12px',
           }}
         >
           Add Passengers
@@ -79,6 +80,7 @@ class AddPassengers extends Component {
           style={{
             marginRight: '10px',
             marginLeft: '10px',
+            fontSize: '12px',
           }}
         >
           Update Passengers
