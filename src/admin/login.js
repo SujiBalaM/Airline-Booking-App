@@ -10,7 +10,6 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -101,8 +100,6 @@ class Login extends Component {
       nextProps.loginusers.isloginPending === false &&
       loginusers.isloginPending === true
     ) {
-      console.log('loginusers----------->', loginusers.isLoginSuccess);
-
       if (nextProps.loginusers.isLoginSuccess === true) {
         this.successToast();
         window.location.reload();
@@ -114,13 +111,10 @@ class Login extends Component {
   }
 
   responseGoogle = (response) => {
-    console.log('response', response);
     localStorage.setItem('userInfo', JSON.stringify(response));
     this.props.history.push('flightList');
     window.location.reload();
     var res = response.profileObj;
-    console.log('data from google',res);
-    console.log('',this.props)
   };
 
   render() {
@@ -128,9 +122,6 @@ class Login extends Component {
     const { loginusers } = this.props;
 
     return (
-      // <div>
-      //   <Container component='main' maxWidth='xs'>
-      //     <CssBaseline />
       <Grid container component='main' className={classes.root}>
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} className={classes.image} />

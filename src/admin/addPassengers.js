@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Button, MenuItem } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AddPassengerDialog from '../admin/addPassengerDialog';
-// import DateFnsUtils from '@date-io/date-fns';
 import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
@@ -16,24 +15,22 @@ const useStyles = makeStyles((theme) => ({
 
 class AddPassengers extends Component {
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       isOpen: false,
       asAddData: [],
       mode: 'add',
+      selectRowData: this.props.selectedRowData.id,
     };
   }
   handleClickOpen = (args) => {
     const { selectedRowData } = this.props;
-    console.log('selectedRowData', selectedRowData);
     if (args === 'add') {
       this.setState({ isOpen: true, mode: 'add' });
     } else {
       const data = this.props.dashboardList.filter(
         (response, { key: id }) => response.id === selectedRowData[0].id
       );
-      console.log('data', data);
       this.setState({ isOpen: true, asAddData: data[0], mode: 'edit' });
     }
   };
@@ -44,21 +41,6 @@ class AddPassengers extends Component {
   render() {
     const { dashboardList } = this.props;
     const { selectedRowData } = this.props;
-    console.log('selectedRowData', selectedRowData);
-
-    console.log('addPassenger Component', dashboardList);
-    // console.log(props);
-    // const [open, setOpen] = React.useState(false);
-    // const [gender, setGender] = React.useState('Male');
-    // const [mode, setMode] = React.useState('add');
-    // const handleClickOpen = (args) => {
-    //   setOpen(true);
-    // };
-
-    // const hanldeClose = (args) => {
-    //   setOpen(false);
-    // };
-
     return (
       <div>
         <Button
@@ -73,18 +55,21 @@ class AddPassengers extends Component {
         >
           Add Passengers
         </Button>
-        <Button
-          color='primary'
-          variant='contained'
-          onClick={() => this.handleClickOpen('edit')}
-          style={{
-            marginRight: '10px',
-            marginLeft: '10px',
-            fontSize: '12px',
-          }}
-        >
-          Update Passengers
-        </Button>
+        {selectedRowData.length > 0 && (
+          <Button
+            color='primary'
+            variant='contained'
+            onClick={() => this.handleClickOpen('edit')}
+            style={{
+              marginRight: '10px',
+              marginLeft: '10px',
+              fontSize: '12px',
+            }}
+          >
+            Update Passengers
+          </Button>
+        )}
+
         {this.state.isOpen && (
           <AddPassengerDialog
             isOpen={this.state.isOpen}
@@ -98,7 +83,6 @@ class AddPassengers extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log('########', state);
   return {
     dashboardList: state.dashboardAdminList.data,
   };

@@ -18,7 +18,6 @@ const userDetails = localStorage.getItem('user');
 const userInfo = JSON.parse(userDetails);
 const googleUserDetails = localStorage.getItem('userInfo');
 const googleUser = JSON.parse(googleUserDetails);
-console.log('userInfo--->', googleUser);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -27,7 +26,6 @@ ReactDOM.render(
         <Route
           path='/login'
           render={(props) => {
-            console.log('userInfo---------->', userInfo);
             return !userInfo && !googleUser ? (
               <Login {...props} />
             ) : googleUser ? (
@@ -88,16 +86,20 @@ ReactDOM.render(
             );
           }}
         />
-        <Route path='/checkinDetails/:flightNo' 
-        render={(props) => {
-          return !userInfo && !googleUser ? (
-            <Redirect to={{ pathname: '/login' }} />
-          ) : (
-            <CheckinDetails {...props} />
-          );
-        }}
+        <Route
+          path='/checkinDetails/:flightNo'
+          render={(props) => {
+            return !userInfo && !googleUser ? (
+              <Redirect to={{ pathname: '/login' }} />
+            ) : (
+              <CheckinDetails {...props} />
+            );
+          }}
         />
-        <Route exact path='/' render={(props) => {
+        <Route
+          exact
+          path='/'
+          render={(props) => {
             return !userInfo && !googleUser ? (
               <Login {...props} />
             ) : googleUser ? (
@@ -105,7 +107,8 @@ ReactDOM.render(
             ) : (
               <Redirect to={{ pathname: '/dashboard' }} />
             );
-          }} />
+          }}
+        />
       </Switch>
     </Router>
   </Provider>,

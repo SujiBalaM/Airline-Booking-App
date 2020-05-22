@@ -76,12 +76,10 @@ class FlightList extends Component {
   componentDidMount() {
     const { flightDetails } = this.props;
     flightDetails();
-    console.log('fligh from did mount', this.props.flightList);
   }
 
   render() {
     const { flightList } = this.props;
-    console.log('flight Data------->', flightList);
     return (
       <div>
         <Header />
@@ -109,7 +107,6 @@ class FlightList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('flight----->', state);
   return {
     flightList: state.flightData,
   };

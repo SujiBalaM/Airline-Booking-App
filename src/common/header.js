@@ -9,7 +9,8 @@ const userDetails = localStorage.getItem('user');
 const userDetail = JSON.parse(userDetails);
 const googleUserDetails = localStorage.getItem('userInfo');
 const googleUser = JSON.parse(googleUserDetails);
-const user = (googleUser && googleUser.profileObj) || (userDetail && userDetail[0]);
+const user =
+  (googleUser && googleUser.profileObj) || (userDetail && userDetail[0]);
 const useStyles = (theme) => ({
   root: {
     flexGrow: 1,
@@ -23,14 +24,13 @@ const useStyles = (theme) => ({
 });
 
 class Header extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
   handleClick = () => {
     localStorage.clear('user');
     window.location.reload();
-
-  }
+  };
   render() {
     const { classes } = this.props;
     const { history } = this.props;

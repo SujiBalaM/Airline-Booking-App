@@ -5,11 +5,7 @@ import { TextField, MenuItem, Button } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import { connect } from 'react-redux';
-import {
-  addAncillery,
-  updateAncillery,
-  deleteAncillery,
-} from '../redux/ancillery/action';
+import { addAncillery, updateAncillery } from '../redux/ancillery/action';
 import { dasboardData } from '../redux/dashboard/action';
 
 const useStyles = (theme) => ({
@@ -56,7 +52,6 @@ class AddServicesForm extends Component {
     const form = event.target;
     const data = new FormData(form);
     const formdata = {};
-    console.log('handleSubmit---------------->', asData);
     if (asData.length === 0) {
       formdata.id = this.props.data.id;
       formdata.snacks = data.get('snacks');
@@ -80,8 +75,6 @@ class AddServicesForm extends Component {
     formdata.meals = this.state.meals;
     formdata.drinks = this.state.drinks;
     this.props.updatingServices(formdata);
-    console.log('handleUpdate---------------->', formdata);
-    // this.props.dasboardData();
   };
 
   render() {
@@ -114,7 +107,6 @@ class AddServicesForm extends Component {
       { Drinks: 'Sweet-Lime Juice', Label: 'Sweet-lime' },
       { Drinks: 'Fresh Fruit Cocktail', Label: 'Cocktail' },
     ];
-    console.log('test', this.props.data);
     return (
       <div>
         <Dialog open={this.props.isOpen} onClose={this.handleClickOpen}>
@@ -169,12 +161,7 @@ class AddServicesForm extends Component {
                 Cancel
               </Button>
               {currentmode == 'add' ? (
-                <Button
-                  type='submit'
-                  name='submit'
-                  color='primary'
-                  //onClick={this.handleSubmit}
-                >
+                <Button type='submit' name='submit' color='primary'>
                   Add
                 </Button>
               ) : (

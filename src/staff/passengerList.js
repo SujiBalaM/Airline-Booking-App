@@ -4,13 +4,17 @@ import { Link } from 'react-router-dom';
 
 const handleClickOpen = () => {
   const { history } = this.props;
-  history.push('/passengerDetails/43')
-}
+  history.push('/passengerDetails/43');
+};
 const PassengerList = (props) => {
-  console.log('passengerList',props)
   return (
     <div>
-      <Button component = {Link} to={`/passengerDetails/${props.data.flightNo}`} name='submit' color='primary' >
+      <Button
+        component={Link}
+        to={`/passengerDetails/${props.data.flightNo}`}
+        name='submit'
+        color='primary'
+      >
         Passenger List
       </Button>
     </div>

@@ -9,7 +9,6 @@ export function getFlightDetails() {
     fetch('http://localhost:5000/db')
       .then((response) => response.json())
       .then((flightData) => {
-        console.log('getFlightDetails action=------->', flightData);
         const flightDetails = flightData.flightDetails;
         dispatch({ type: FLIGHTDETAILS_SUCCESS, payload: flightDetails });
       });

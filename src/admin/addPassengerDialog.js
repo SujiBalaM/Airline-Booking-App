@@ -28,7 +28,6 @@ class AddPassengerDialog extends Component {
     });
 
   constructor(props) {
-    console.log('addDialog', props);
     super(props);
     this.state = {
       isOpen: false,
@@ -105,7 +104,6 @@ class AddPassengerDialog extends Component {
     const form = e.target;
     const data = new FormData(form);
     const formdata = {};
-    console.log('passengerData------->', passengerData);
     if (passengerData.length === 0) {
       formdata.id = data.get('id');
       formdata.flightNo = data.get('flightNo');
@@ -118,8 +116,6 @@ class AddPassengerDialog extends Component {
       formdata.ancillaryservices = data.get('ancillary');
       formdata.seatnumber = data.get('seatnumber');
       this.props.addingPassengers(formdata);
-      // this.props.actionHandleClose();
-      // this.props.dasboardData();
     } else {
       formdata.id = this.props.passengerData.id;
       formdata.flightNo = this.state.flightNo;
@@ -132,7 +128,6 @@ class AddPassengerDialog extends Component {
       formdata.ancillaryservices = this.state.ancillary;
       formdata.seatnumber = this.state.seatnumber;
       this.props.editingPassenger(formdata);
-      // this.props.actionHandleClose();
     }
   };
   handleChange = (event) => {
@@ -141,8 +136,6 @@ class AddPassengerDialog extends Component {
 
   componentWillReceiveProps(nextProps, nextState) {
     const { addedPassengers, dasboardData } = this.props;
-    console.log('nextProps', nextProps.addedPassengers.isDataPending);
-    console.log('this props', addedPassengers.isDataPending);
     if (
       (nextProps.addedPassengers.isDataPending === false &&
         addedPassengers.isDataPending === true) ||
@@ -153,7 +146,6 @@ class AddPassengerDialog extends Component {
         nextProps.addedPassengers.isDataSuccess === true ||
         nextProps.addedPassengers.isEditSuccess === true
       ) {
-        console.log('nextProps', nextProps.addedPassengers);
         this.successToast();
         this.props.actionHandleClose();
         dasboardData();
@@ -163,8 +155,6 @@ class AddPassengerDialog extends Component {
 
   render() {
     const { classes, passengerData, currentmode } = this.props;
-    console.log('passengerData', passengerData);
-    console.log('currentmode', currentmode);
 
     const gender = [
       {

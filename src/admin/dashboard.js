@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
-import { Slide } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { dasboardData } from '../redux/dashboard/action';
 import Footer from '../common/footer';
 import Header from '../common/header';
-import Button from '@material-ui/core/Button';
 import ImageComponent from '../admin/image';
 import AddPassengers from './addPassengers';
 import Search from '../common/search';
@@ -104,14 +102,15 @@ class Dashboard extends Component {
     this.setState({ searchPassengers: searchDetails });
   };
   clearData = () => {
-    this.setState({ searchPassengers: [] });
+    this.setState({ searchPassengers: [] }, () => {
+      window.location.reload();
+    });
   };
   setAlert = (msg, type) => {
     this.setState({ alert: { msg, type } });
   };
   onSelectionChanged = (events) => {
     var selectedRows = events.api.getSelectedRows();
-    console.log(selectedRows);
     this.setState({ selectedRowValue: selectedRows });
   };
 

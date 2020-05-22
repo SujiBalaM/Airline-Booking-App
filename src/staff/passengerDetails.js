@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import Footer from '../common/footer';
 import Header from '../common/header';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { dasboardData } from '../redux/dashboard/action';
 
 class PassengerDetails extends Component {
   constructor(props) {
-    console.log('passengerDetails', props);
     super(props);
     this.state = {
       flightId: props.match.params.flightNo,
@@ -86,12 +83,10 @@ class PassengerDetails extends Component {
 
   render() {
     const { dashboardList } = this.props;
-    console.log('from passenger details com', dashboardList);
     const flightId = this.state.flightId;
     const passengerDetails = dashboardList.data.filter(
       (data) => data.flightNo === flightId
     );
-    console.log('passengerDetails------>', passengerDetails);
 
     return (
       <div>

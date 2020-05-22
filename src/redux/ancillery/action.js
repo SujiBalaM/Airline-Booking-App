@@ -9,13 +9,11 @@ import {
 import axios from 'axios';
 
 export function addAncillery(args) {
-  console.log("addAncillery",args)
   return (dispatch) => {
     dispatch({ type: ADDANCILLERY_PENDING });
     axios
       .post('http://localhost:5000/ancillaryservices', args)
       .then((response) => {
-        console.log(response);
         dispatch({ type: ADDANCILLERY_SUCCESS });
       })
       .catch((error) => {
@@ -28,9 +26,7 @@ export function deleteAncillery(id) {
   return (dispatch) => {
     axios
       .delete(`http://localhost:5000/ancillaryservices/${id}`)
-      .then((response) => {
-        console.log(response);
-      })
+      .then((response) => {})
       .catch((error) => {
         console.log(error);
       });
@@ -44,7 +40,6 @@ export function updateAncillery(args) {
     axios
       .put(`http://localhost:5000/ancillaryservices/${id}`, args)
       .then((response) => {
-        console.log(response);
         dispatch({ type: EDITANCILLERY_SUCCESS, id });
       })
       .catch((error) => {

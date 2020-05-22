@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import { deleteAncillery } from '../redux/ancillery/action';
 import { dasboardData } from '../redux/dashboard/action';
 
-
 class ImageComponent extends Component {
   constructor(props) {
     super(props);
@@ -27,10 +26,8 @@ class ImageComponent extends Component {
     this.clickClose = this.clickClose.bind(this);
   }
   handleClickOpen(args) {
-    console.log('from Image args', args);
     if (args === 'add') {
       const { isOpen } = this.state;
-      console.log('from Image component', this.state);
       this.setState({ isOpen: true, mode: 'add' });
     } else {
       const data = this.props.dashboardList.filter(
@@ -46,7 +43,7 @@ class ImageComponent extends Component {
     this.props.deletingServices(id);
   }
   handleDelete = (event) => {
-    const {dasboardData} = this.props;
+    const { dasboardData } = this.props;
     const id = this.props.data.id;
     this.props.deletingServices(id);
     window.location.reload();
@@ -114,8 +111,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     deletingServices: (id) => dispatch(deleteAncillery(id)),
-    dasboardData: () => dispatch(dasboardData())
-
+    dasboardData: () => dispatch(dasboardData()),
   };
 };
 

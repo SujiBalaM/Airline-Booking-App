@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 import Header from '../common/header';
 import { connect } from 'react-redux';
 import { dasboardData } from '../redux/dashboard/action';
 import StarIcon from '@material-ui/icons/Star';
-import AirlineSeatReclineNormalIcon from '@material-ui/icons/AirlineSeatReclineNormal';
-
 import Footer from '../common/footer';
 import { Color } from 'ag-grid-community';
 
@@ -26,7 +23,6 @@ class CheckinDetails extends Component {
   getUserSeats(totalSeats, checkedInPassangers, ancillaryServices) {
     let i = 0;
     let seats = [];
-    console.log('ancillaryServices', ancillaryServices);
     while (i < totalSeats) {
       i++;
       let color = checkedInPassangers
@@ -38,7 +34,6 @@ class CheckinDetails extends Component {
         ancillaryServices
           .map((m) => (m.id === color[0] ? true : false))
           .filter((x) => x);
-      console.log('services----->', services);
       seats.push(
         <div style={{ textAlign: 'center', position: 'relative' }}>
           <svg
@@ -53,7 +48,7 @@ class CheckinDetails extends Component {
               fill={`${color.length === 0 ? 'red' : 'green'}`}
             />
           </svg>
-          
+
           {services && services.length !== 0 ? (
             <StarIcon className='star' />
           ) : (
@@ -66,29 +61,8 @@ class CheckinDetails extends Component {
     return seats;
   }
 
-  // ancillaryservicesComponent = (props) => {
-  //   const { dashboardList } = this.props;
-  //   const Id = props.data.id;
-  //   const ancillaryServices = dashboardList.data.ancillaryServices.filter(
-  //     (data) => data.id === Id
-  //   );
-  //   const filteredData = Array.prototype.map.call(
-  //     ancillaryServices,
-  //     (seperatedData) =>
-  //       seperatedData.meals +
-  //       ', ' +
-  //       seperatedData.snacks +
-  //       ',' +
-  //       seperatedData.drinks
-  //   );
-  //   console.log('filtered Data', filteredData);
-  //   this.setState({ ancillaryServices: filteredData });
-  //   return <div>{filteredData}</div>;
-  // };
-
   render() {
     const { dashboardList } = this.props;
-    console.log('from passenger details com', dashboardList);
     const flightId = this.state.flightId;
     const checkinDetails = dashboardList.data.filter(
       (data) => data.flightNo === flightId
@@ -101,6 +75,13 @@ class CheckinDetails extends Component {
         <Header />
         <br />
         <h4>Passenger Checked In Details</h4>
+        <br />
+        <span> Red color Seat --- Empty</span>
+        <br />
+        <span> Green color Seat --- Checked In</span>
+        <br />
+        <span> Star with Green color Seat --- Ancillary Services Req</span>
+        <br />
         <br />
         <div className='seats'>
           {this.getUserSeats(
@@ -116,7 +97,6 @@ class CheckinDetails extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log('checkindetailsstate------>', state);
   return {
     dashboardList: state.dashboardAdminList,
   };
